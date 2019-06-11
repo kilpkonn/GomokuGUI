@@ -28,7 +28,7 @@ public class Player {
     }
 
     public Board.Location getMove(Board board, long timeout) throws ThinkingTimeoutException {
-        Task thinkingTask = new Task(board);
+        Task thinkingTask = new Task(board, isWhite);
         Future<Board.Location> future = executor.submit(thinkingTask);
         Board.Location move = null;
 
@@ -63,14 +63,16 @@ public class Player {
     private class Task implements Callable<Board.Location> {
 
         private Board board;
+        private boolean isWhite;
 
-        public Task(Board board) {
+        Task(Board board, boolean isWhite) {
             this.board = board;
+            this.isWhite = isWhite;
         }
 
         @Override
         public Board.Location call() {
-            return strategy.getMove(board);
+            return strategy.getMove(board, isWhite);
         }
     }
 

@@ -21,7 +21,7 @@ public class BoardCell extends Button {
     }
 
     public boolean isAt(Board.Location location) {
-        return this.location == location;
+        return this.location.equals(location);
     }
 
     public void placeStone(Player player) {

@@ -87,4 +87,8 @@ public class Game {
     public double getWindowWidth() {
         return primaryStage.getWidth();
     }
+
+    public void close() {
+        gameThread.interrupt();
+    }
 }

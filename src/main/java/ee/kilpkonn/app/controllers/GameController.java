@@ -12,7 +12,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GameController extends Controller {
@@ -62,6 +64,11 @@ public class GameController extends Controller {
 
     public void makeMove(Board.Location location, Player player) {
         Platform.runLater(() -> {
+            var a = board.getChildren().stream()
+                    .filter(c -> ((BoardCell) c).isAt(location))
+                    .collect(Collectors.toList());
+            System.out.println(a);
+
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))
                     .forEach(c -> ((BoardCell) c).placeStone(player));  //Do it just once, no need for optional

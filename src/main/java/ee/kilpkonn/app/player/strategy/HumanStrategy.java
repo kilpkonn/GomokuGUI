@@ -7,7 +7,7 @@ public class HumanStrategy extends Strategy {
     private static boolean playing = false;
 
     @Override
-    public Board.Location getMove(Board board) {
+    public Board.Location getMove(Board board, boolean isWhite) {
         selectedCell = null;
         playing = true;
         while (selectedCell == null) {
@@ -19,11 +19,6 @@ public class HumanStrategy extends Strategy {
         }
         playing = false;
         return selectedCell;
-    }
-
-    @Override
-    public String toString() {
-        return getName();
     }
 
     @Override

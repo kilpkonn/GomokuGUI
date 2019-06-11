@@ -9,7 +9,7 @@ import javafx.scene.paint.Stop;
 
 public abstract class Strategy {
 
-    public abstract Board.Location getMove(Board board);
+    public abstract Board.Location getMove(Board board, boolean isWhite);
 
     public Paint getColor(boolean white) {
         if (!white) {
@@ -26,4 +26,9 @@ public abstract class Strategy {
     }
 
     public abstract String getName();
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

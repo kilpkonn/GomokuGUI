@@ -38,6 +38,11 @@ public class Launcher extends Application {
         primaryStage.setTitle("Gomoku by kilpkonn");
 
         primaryStage.setMaximized(false);
+
+        primaryStage.setOnCloseRequest(e -> {
+            game.close();
+        });
+
         primaryStage.show();
     }
 }
