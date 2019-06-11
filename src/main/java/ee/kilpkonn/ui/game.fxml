@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane styleClass="anchor-pane" stylesheets="@css/game.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <StackPane fx:id="pane" BorderPane.alignment="CENTER">
+         <children>
+            <BorderPane styleClass="border-pane">
+               <center>
+               </center>
+               <center>
+                  <GridPane fx:id="board" />
+               </center>
+               <right>
+                  <VBox styleClass="stats-vbox" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label text="Gomoku" styleClass="lbl-gomoku"/>
+                        <Label text="by kilpkonn" styleClass="lbl-credit"/>
+                        <Pane styleClass="stats-pane">
+                           <VBox styleClass="stats-player-vbox">
+                              <children>
+                                 <Label fx:id="player1_name" styleClass="lbl-player-name" text="Player 1" />
+                                 <Label fx:id="player1_games" styleClass="lbl-stats" text="Games" translateX="50.0" />
+                                 <Label fx:id="player1_wins" styleClass="lbl-stats" text="Wins" translateX="50.0" />
+                                 <Label fx:id="player1_losses" styleClass="lbl-stats" text="Losses" translateX="50.0" />
+                                 <Label fx:id="player1_draws" styleClass="lbl-stats" text="Draws" translateX="50.0" />
+                                 <Label fx:id="player1_total_moves" styleClass="lbl-stats" text="Wins" translateX="50.0" />
+                                 <Label fx:id="player1_current_moves" styleClass="lbl-stats" text="Wins" translateX="50.0" />
+                              </children>
+                           </VBox>
+                        </Pane>
+                        <Pane styleClass="stats-pane">
+                           <VBox styleClass="stats-player-vbox">
+                              <children>
+                                 <Label fx:id="player2_name" styleClass="lbl-player-name" text="Player 2" />
+                                 <Label fx:id="player2_games" styleClass="lbl-stats" text="Games" translateX="50.0" />
+                                 <Label fx:id="player2_wins" styleClass="lbl-stats" text="Wins" translateX="50.0" />
+                                 <Label fx:id="player2_losses" styleClass="lbl-stats" text="Losses" translateX="50.0" />
+                                 <Label fx:id="player2_draws" styleClass="lbl-stats" text="Draws" translateX="50.0" />
+                                 <Label fx:id="player2_total_moves" styleClass="lbl-stats" text="Wins" translateX="50.0" />
+                                 <Label fx:id="player2_current_moves" styleClass="lbl-stats" text="Wins" translateX="50.0" />
+                              </children>
+                           </VBox>
+                        </Pane>
+                     </children></VBox>
+               </right>
+            </BorderPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
