@@ -1,5 +1,6 @@
 package ee.kilpkonn.app;
 
+import ee.kilpkonn.app.board.Board;
 import ee.kilpkonn.app.controllers.GameController;
 import ee.kilpkonn.app.controllers.MenuController;
 import ee.kilpkonn.app.player.Player;
@@ -19,6 +20,7 @@ public class Game {
     private Scene menuScene;
     private Scene gameScene;
     private Thread gameThread;
+    private int gamesCount;
     private Map<Strategy, Player> players;
 
     public Game(Stage primaryStage, Scene menuScene, Scene gameScene, MenuController menuController,
@@ -34,7 +36,8 @@ public class Game {
         primaryStage.setScene(menuScene);
     }
 
-    public void start(Strategy strategy1, Strategy strategy2, int boardWidth, int boardHeight) {
+    public void start(Strategy strategy1, Strategy strategy2, int boardWidth, int boardHeight, int gamesCount) {
+        this.gamesCount = gamesCount - 1;  //Game 1 already started
         Player player1 = players.containsKey(strategy1) ? players.get(strategy1) : new Player(strategy1);
         Player player2 = players.containsKey(strategy2) && strategy1 != strategy2 ? players.get(strategy2) :
                 new Player(strategy2);
@@ -44,8 +47,7 @@ public class Game {
         players.putIfAbsent(strategy1, player1);
         players.putIfAbsent(strategy2, player2);
 
-        player1.setIsWhite(true);
-        player2.setIsWhite(false);
+        boolean lastGame = gamesCount == 0;
 
         this.session = new GameSession(gameController, player1, player2, boardWidth, boardHeight);
         gameController.initializeBoard(session.getBoard());
@@ -59,13 +61,13 @@ public class Game {
 
             switch (session.getState()) {
                 case WHITE_WON:
-                    gameController.showBanner("White Won!");
+                    gameController.showBanner("White Won!", !lastGame);
                     break;
                 case BLACK_WON:
-                    gameController.showBanner("Black Won!");
+                    gameController.showBanner("Black Won!", !lastGame);
                     break;
                 case DRAW:
-                    gameController.showBanner("Draw.");
+                    gameController.showBanner("Draw.", !lastGame);
                     break;
                 default:
                     System.out.println("Illegal game state, SumTingWong!");
@@ -77,7 +79,14 @@ public class Game {
     }
 
     public void end() {
-        primaryStage.setScene(menuScene);
+        primaryStage.setScene(menuScene);  //needed for banner fix?
+        if (gamesCount > 0) {
+            start(session.getBlackPlayer().getStrategy(),
+                    session.getWhitePlayer().getStrategy(),
+                    session.getBoard().getWidth(),
+                    session.getBoard().getHeight(),
+                    gamesCount);
+        }
     }
 
     public double getWindowHeight() {

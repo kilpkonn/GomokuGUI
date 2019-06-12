@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
@@ -32,31 +33,49 @@
                            <children>
                               <VBox styleClass="v-box-player">
                                  <children>
-                                    <Label text="Player 1" />
+                                    <Label text="Player 1" styleClass="lbl-player"/>
                                     <ComboBox fx:id="player1" styleClass="combo-box" />
                                     <HBox styleClass="h-box-line">
                                        <children>
-                                          <Label text="Time limit (s):"/>
-                                          <TextField fx:id="player1_timeout" text="2" styleClass=""/>
+                                          <Label text="Time limit (s):" />
+                                          <TextField fx:id="player1_timeout" styleClass="" text="2" />
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
                               <VBox styleClass="v-box-player">
                                  <children>
-                                    <Label text="Player 2" />
+                                    <Label text="Player 2" styleClass="lbl-player"/>
                                     <ComboBox fx:id="player2" styleClass="combo-box" />
                                     <HBox styleClass="h-box-line">
                                        <children>
-                                          <Label text="Time limit (s):"/>
-                                          <TextField fx:id="player2_timeout" text="2" styleClass=""/>
+                                          <Label text="Time limit (s):" />
+                                          <TextField fx:id="player2_timeout" styleClass="" text="2" />
                                        </children>
                                     </HBox>
                                  </children>
                               </VBox>
                            </children>
                         </HBox>
-                     </children></VBox>
+                        <HBox styleClass="h-box-advanced">
+                           <children>
+                              <Separator styleClass="separator-advanced"/>
+                              <Label text="Advanced" styleClass="lbl-advanced"/>
+                              <Separator styleClass="separator-advanced"/>
+                           </children>
+                        </HBox>
+                        <VBox>
+                           <children>
+                              <HBox styleClass="h-box-line">
+                                 <children>
+                                    <Label text="Best of:"/>
+                                    <TextField fx:id="games_count" text="1"/>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
                </children>
             </HBox>
          </children>

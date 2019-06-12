@@ -21,6 +21,7 @@ public class MenuController extends Controller {
     @FXML private TextField board_height;
     @FXML private TextField player1_timeout;
     @FXML private  TextField player2_timeout;
+    @FXML private  TextField games_count;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -59,12 +60,14 @@ public class MenuController extends Controller {
         try {
             int boardWidth = Integer.parseInt(board_width.getText());
             int boardHeight = Integer.parseInt(board_height.getText());
+            int gamesCount = Integer.parseInt(games_count.getText());
 
             game.start(player1.getValue(), player2.getValue(),
                     boardWidth > 2 ? boardWidth : 3,
-                    boardHeight > 2 ? boardHeight : 3);
+                    boardHeight > 2 ? boardHeight : 3,
+                    gamesCount);
         } catch (NumberFormatException e) {
-            System.out.println("Board width and height have to be numbers");
+            System.out.println("Board width, height & games count have to be numbers!");
         }
     }
 }

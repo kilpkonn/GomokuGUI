@@ -84,4 +84,7 @@ public class Player {
         return strategy.getName();
     }
 
+    public Strategy getStrategy() {
+        return strategy;
+    }
 }

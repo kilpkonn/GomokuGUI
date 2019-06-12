@@ -23,13 +23,13 @@
 
 .v-box-player {
     -fx-pref-width: 200px;
-    -fx-pref-height: 200px;
+    -fx-pref-height: 100px;
     -fx-alignment: center;
 }
 
 .h-box-players {
     -fx-pref-width: 400px;
-    -fx-pref-height: 200px;
+    -fx-pref-height: 100px;
     -fx-alignment: center;
 }
 
@@ -65,6 +65,10 @@
     -fx-padding: 5px;
 }
 
+.lbl-player {
+    -fx-font-weight: bold;
+}
+
 .lbl-gomoku {
     -fx-font-family: 'Allerta Stencil';
     -fx-font-size: 42px;
@@ -93,4 +97,19 @@
     -fx-padding: 2px;
     -fx-pref-width: 35px;
     -fx-text-alignment: center;
+}
+
+.h-box-advanced {
+    -fx-pref-height: 50px;
+    -fx-pref-width: 800px;
+    -fx-alignment: center;
+}
+
+.lbl-advanced{
+    -fx-font-size: 16px;
+    -fx-padding: 10px;
+}
+
+.separator-advanced {
+    -fx-pref-width: 300px;
 }

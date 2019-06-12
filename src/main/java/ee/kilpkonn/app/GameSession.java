@@ -22,6 +22,8 @@ public class GameSession {
         this.gameController = gameController;
         this.whitePlayer = whitePlayer;
         this.blackPlayer = blackPlayer;
+        whitePlayer.setIsWhite(true);
+        blackPlayer.setIsWhite(false);
 
         board = new Board(boardWidth, boardHeight);
         state = GameState.PLAYING;

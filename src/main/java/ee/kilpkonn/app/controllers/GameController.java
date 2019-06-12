@@ -5,11 +5,14 @@ import ee.kilpkonn.app.controllers.components.Banner;
 import ee.kilpkonn.app.controllers.components.BoardCell;
 import ee.kilpkonn.app.player.Player;
 import ee.kilpkonn.app.player.statistics.Statistics;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.List;
@@ -75,12 +78,20 @@ public class GameController extends Controller {
         });
     }
 
-    public void showBanner(String text) {
+    public void showBanner(String text, boolean autoClose) {
         Platform.runLater(() -> {
             if (banner != null) {
                 pane.getChildren().remove(banner);
             }
             this.banner = new Banner(text, game.getWindowWidth(), game.getWindowHeight());
+
+            if (autoClose) {
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),
+                        e -> pane.getChildren().remove(banner)));
+                timeline.setCycleCount(1);
+                timeline.setOnFinished(e -> game.end());
+                timeline.play();
+            }
             banner.setOnMouseClicked(e -> game.end());
             pane.getChildren().add(banner);
         });
