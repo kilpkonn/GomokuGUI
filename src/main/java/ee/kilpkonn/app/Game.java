@@ -89,6 +89,8 @@ public class Game {
     }
 
     public void close() {
-        gameThread.interrupt();
+        if (gameThread != null) {
+            gameThread.interrupt();
+        }
     }
 }

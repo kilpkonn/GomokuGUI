@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -21,8 +22,9 @@
                <right>
                   <VBox styleClass="stats-vbox" BorderPane.alignment="CENTER">
                      <children>
-                        <Label text="Gomoku" styleClass="lbl-gomoku"/>
-                        <Label text="by kilpkonn" styleClass="lbl-credit"/>
+                        <Label styleClass="lbl-gomoku" text="Gomoku" />
+                        <Label styleClass="lbl-credit" text="by kilpkonn" />
+                        <Separator />
                         <Pane styleClass="stats-pane">
                            <VBox styleClass="stats-player-vbox">
                               <children>
@@ -36,6 +38,7 @@
                               </children>
                            </VBox>
                         </Pane>
+                        <Separator />
                         <Pane styleClass="stats-pane">
                            <VBox styleClass="stats-player-vbox">
                               <children>

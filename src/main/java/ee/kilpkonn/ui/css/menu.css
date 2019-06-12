@@ -33,6 +33,12 @@
     -fx-alignment: center;
 }
 
+.h-box-line {
+    -fx-pref-width: 400px;
+    -fx-pref-height: 30px;
+    -fx-alignment: center;
+}
+
 .combo-box {
     -fx-pref-width: 180px;
     -fx-alignment: center;
@@ -55,7 +61,7 @@
 
 .label {
     -fx-font-family: 'Allerta Stencil';
-    -fx-font-size: 18px;
+    -fx-font-size: 14px;
     -fx-padding: 5px;
 }
 

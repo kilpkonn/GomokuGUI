@@ -34,14 +34,24 @@
                                  <children>
                                     <Label text="Player 1" />
                                     <ComboBox fx:id="player1" styleClass="combo-box" />
-                                    <TextField fx:id="player1_timeout" text="2"/>
+                                    <HBox styleClass="h-box-line">
+                                       <children>
+                                          <Label text="Time limit (s):"/>
+                                          <TextField fx:id="player1_timeout" text="2" styleClass=""/>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                               <VBox styleClass="v-box-player">
                                  <children>
                                     <Label text="Player 2" />
                                     <ComboBox fx:id="player2" styleClass="combo-box" />
-                                    <TextField fx:id="player2_timeout" text="2"/>
+                                    <HBox styleClass="h-box-line">
+                                       <children>
+                                          <Label text="Time limit (s):"/>
+                                          <TextField fx:id="player2_timeout" text="2" styleClass=""/>
+                                       </children>
+                                    </HBox>
                                  </children>
                               </VBox>
                            </children>
