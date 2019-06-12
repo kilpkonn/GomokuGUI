@@ -1,4 +1,5 @@
 # GomokuGUI
 Gomoku UI
 
-![alt text](/readme/game.png?raw=true)
+![Menu](/readme/menu.png?raw=true)
+![Game](/readme/game.png?raw=true)
