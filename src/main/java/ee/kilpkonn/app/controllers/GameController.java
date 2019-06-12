@@ -91,8 +91,9 @@ public class GameController extends Controller {
                 timeline.setCycleCount(1);
                 timeline.setOnFinished(e -> game.end());
                 timeline.play();
+            } else {
+                banner.setOnMouseClicked(e -> game.end());
             }
-            banner.setOnMouseClicked(e -> game.end());
             pane.getChildren().add(banner);
         });
     }

@@ -54,6 +54,8 @@ public class Game {
         gameController.updateStats(session.getWhitePlayer(), session.getBlackPlayer());
         primaryStage.setScene(gameScene);
 
+        if (gameThread != null && !gameThread.isInterrupted()) gameThread.interrupt();
+
         gameThread = new Thread(() -> {
             while (session.getState() == GameSession.GameState.PLAYING) {
                 session.nextMove();
