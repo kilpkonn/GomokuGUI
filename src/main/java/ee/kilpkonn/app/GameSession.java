@@ -9,6 +9,7 @@ import ee.kilpkonn.app.player.statistics.Statistics;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CancellationException;
 import java.util.stream.Collectors;
 
 public class GameSession {
@@ -58,7 +59,7 @@ public class GameSession {
 
             moves.add(currentMove);
 
-        } catch (LocationOccupiedException | ThinkingTimeoutException e) {
+        } catch (LocationOccupiedException | ThinkingTimeoutException | CancellationException e) {
             e.printStackTrace();
             currentMove = EMPTY_MOVE.clone();
             moves.add(currentMove);
@@ -104,6 +105,14 @@ public class GameSession {
 
         currentMove = moves.get(index);
         return true;
+    }
+
+    public void cancelMove() {
+        if (whiteToMove) {
+            whitePlayer.cancelThinking();
+        } else {
+            blackPlayer.cancelThinking();
+        }
     }
 
     public void submitGame() {

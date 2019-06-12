@@ -7,6 +7,7 @@ import ee.kilpkonn.app.player.strategy.Strategy;
 import javafx.scene.paint.Paint;
 
 import java.util.concurrent.Callable;
+import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -19,6 +20,7 @@ public class Player {
     private Strategy strategy;
     private Statistics stats;
     private ExecutorService executor = Executors.newSingleThreadExecutor();
+    private Future<Board.Location> future;
     private Paint color;
     private boolean isWhite;
 
@@ -27,9 +29,9 @@ public class Player {
         this.stats = new Statistics();
     }
 
-    public Board.Location getMove(Board board, long timeout) throws ThinkingTimeoutException {
+    public Board.Location getMove(Board board, long timeout) throws ThinkingTimeoutException, CancellationException {
         Task thinkingTask = new Task(board, isWhite);
-        Future<Board.Location> future = executor.submit(thinkingTask);
+        future = executor.submit(thinkingTask);
         Board.Location move = null;
 
         try {
@@ -45,6 +47,10 @@ public class Player {
             throw new ThinkingTimeoutException("Thinking took too long :(");
         }
         return move;  //TODO: handle error somehow
+    }
+
+    public void cancelThinking() {
+        future.cancel(true);
     }
 
     public void submitGame(Statistics.Result result) {

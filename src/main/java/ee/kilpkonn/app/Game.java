@@ -132,11 +132,20 @@ public class Game {
         }
     }
 
-    public enum State {
-        REWIND_START, REWIND_MOVE, PLAY, PLAY_MOVE, PLAY_END, STOPPED
+    public void stop() {
+        session.cancelMove();
+        this.state = State.STOPPED;
     }
 
     public void setState(State state) {
         this.state = state;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public enum State {
+        REWIND_START, REWIND_MOVE, PLAY, PLAY_MOVE, PLAY_END, STOPPED
     }
 }

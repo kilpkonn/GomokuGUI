@@ -60,7 +60,7 @@
                         <children>
                            <Button fx:id="rewind_start" text="&lt;&lt;" styleClass="btn-replay"/>
                            <Button fx:id="rewind" text="&lt;" styleClass="btn-replay"/>
-                           <Button fx:id="play" text="PLAY" styleClass="btn-replay"/>
+                           <Button fx:id="play" text="STOP" styleClass="btn-replay"/>
                            <Button fx:id="play_move" text="&gt;" styleClass="btn-replay"/>
                            <Button fx:id="play_end" text="&gt;&gt;" styleClass="btn-replay"/>
                         </children>

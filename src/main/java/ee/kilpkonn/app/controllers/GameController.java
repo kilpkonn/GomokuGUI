@@ -53,7 +53,15 @@ public class GameController extends Controller {
     public void initialize(URL location, ResourceBundle resources) {
         rewind_start.setOnAction(e -> game.setState(Game.State.REWIND_START));
         rewind.setOnAction(e -> game.setState(Game.State.REWIND_MOVE));
-        play.setOnAction(e -> game.setState(Game.State.PLAY));
+        play.setOnAction(e -> {
+            if (game.getState() == Game.State.PLAY) {
+                game.stop();
+                play.setText("PLAY");
+            } else {
+                game.setState(Game.State.PLAY);
+                play.setText("STOP");
+            }
+        });
         play_move.setOnAction(e -> game.setState(Game.State.PLAY_MOVE));
         play_end.setOnAction(e -> game.setState(Game.State.PLAY_END));
     }
