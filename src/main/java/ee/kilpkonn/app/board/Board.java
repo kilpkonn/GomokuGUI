@@ -30,6 +30,12 @@ public class Board {
         matrix[location.y][location.x] = stone;
     }
 
+    public void reverseMove(Location location) {
+        if (!isFree(location) && location.y >= 0 && location.x >= 0) {
+            matrix[location.y][location.x] = null;
+        }
+    }
+
     public GameSession.GameState getGameState(){
         boolean hasFree = false;
         for (int i = 0; i < height; i++) {
@@ -50,7 +56,7 @@ public class Board {
     }
 
     public boolean isFree(Location location) {
-        return matrix[location.y][location.x] == null;
+        return location.y >= 0 && location.x >= 0 && matrix[location.y][location.x] == null;
     }
 
     public Stone[][] getMatrix() {
@@ -155,6 +161,10 @@ public class Board {
         @Override
         public int hashCode() {
             return Objects.hash(x, y);
+        }
+
+        public Location clone() {
+            return new Location(y, x);
         }
     }
 }

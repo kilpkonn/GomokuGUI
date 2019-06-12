@@ -7,6 +7,10 @@ import ee.kilpkonn.app.exceptions.ThinkingTimeoutException;
 import ee.kilpkonn.app.player.Player;
 import ee.kilpkonn.app.player.statistics.Statistics;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class GameSession {
 
     private GameController gameController;
@@ -16,6 +20,9 @@ public class GameSession {
     private GameState state;
     private boolean whiteToMove = true;
     private long timeout = 1000 * 5;
+    private List<Board.Location> moves;
+    private Board.Location currentMove;
+    private static final Board.Location EMPTY_MOVE = new Board.Location(-1, -1);
 
     public GameSession(GameController gameController, Player whitePlayer, Player blackPlayer, int boardWidth,
                        int boardHeight) {
@@ -25,30 +32,78 @@ public class GameSession {
         whitePlayer.setIsWhite(true);
         blackPlayer.setIsWhite(false);
 
+        moves = new ArrayList<>();
         board = new Board(boardWidth, boardHeight);
         state = GameState.PLAYING;
     }
 
-    public void nextMove() {
-        Board.Location move;
+    public void playMove() {
+        int index = moves.indexOf(currentMove) + 1;
+        if (index < moves.size()) {
+            moves = moves.stream()
+                    .limit(index)
+                    .collect(Collectors.toList());
+        }
 
         try {
             if (whiteToMove) {
-                move = whitePlayer.getMove(board, timeout);
-                board.makeMove(move, Board.Stone.WHITE);
+                currentMove = whitePlayer.getMove(board, timeout);
+                board.makeMove(currentMove, Board.Stone.WHITE);
             } else {
-                move = blackPlayer.getMove(board, timeout);
-                board.makeMove(move, Board.Stone.BLACK);
+                currentMove = blackPlayer.getMove(board, timeout);
+                board.makeMove(currentMove, Board.Stone.BLACK);
             }
-            gameController.makeMove(move, whiteToMove ? whitePlayer : blackPlayer);
+            gameController.makeMove(currentMove, whiteToMove ? whitePlayer : blackPlayer);
             gameController.updateStats(whitePlayer, blackPlayer);
+
+            moves.add(currentMove);
+
         } catch (LocationOccupiedException | ThinkingTimeoutException e) {
             e.printStackTrace();
+            currentMove = EMPTY_MOVE.clone();
+            moves.add(currentMove);
             // TODO: Penalty here?
         } finally {
             state = board.getGameState();
             whiteToMove = !whiteToMove;
         }
+    }
+
+    public boolean nextMove() {
+
+        int index = moves.indexOf(currentMove) + 1;
+
+        if (index >= moves.size()) return false;
+
+        currentMove = moves.get(index);
+        try {
+            board.makeMove(currentMove, whiteToMove ? Board.Stone.WHITE : Board.Stone.BLACK);
+            gameController.makeMove(currentMove, whiteToMove ? whitePlayer : blackPlayer);
+        } catch (LocationOccupiedException e) {
+            e.printStackTrace();
+        } finally {
+            state = board.getGameState();
+            whiteToMove = !whiteToMove;
+        }
+        return true;
+    }
+
+    public boolean previousMove() {
+        board.reverseMove(currentMove);
+        gameController.reverseMove(currentMove);
+
+        state = board.getGameState();
+        whiteToMove = !whiteToMove;
+
+        int index = moves.indexOf(currentMove) - 1;
+
+        if (index < 0) {
+            currentMove = null;
+            return false;
+        }
+
+        currentMove = moves.get(index);
+        return true;
     }
 
     public void submitGame() {

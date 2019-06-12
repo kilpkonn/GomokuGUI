@@ -10,6 +10,7 @@ import javafx.scene.shape.Circle;
 public class BoardCell extends Button {
 
     private Board.Location location;
+    private Stone stone;
 
     public BoardCell (Board.Location location, double size) {
         this.location = location;
@@ -25,8 +26,14 @@ public class BoardCell extends Button {
     }
 
     public void placeStone(Player player) {
-        this.getChildren().add(new Stone(this.getHeight() / 2, player.getColor()));
+        stone = new Stone(this.getHeight() / 2, player.getColor());
+        this.getChildren().add(stone);
         this.setDisable(true);
+    }
+
+    public void removeStone() {
+        this.getChildren().remove(stone);
+        this.setDisable(false);
     }
 
     private class Stone extends Circle {

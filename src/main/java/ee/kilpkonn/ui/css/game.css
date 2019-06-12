@@ -54,13 +54,13 @@
 .lbl-player-name {
     -fx-text-alignment: left;
     -fx-padding: 8px;
-    -fx-font-size: 20px;
+    -fx-font-size: 19px;
     -fx-font-weight: bold;
 }
 
 .lbl-stats {
     -fx-text-alignment: right;
-    -fx-font-size: 16px;
+    -fx-font-size: 15px;
     -fx-font-weight: bold;
 }
 
@@ -78,4 +78,16 @@
     -fx-font-style: italic;
     -fx-text-alignment: center;
     -fx-padding: 10px, 5px, 5px, 5px;
+}
+
+.btn-replay {
+    -fx-font-family: 'Allerta Stencil';
+    -fx-padding: 3px;
+    -fx-pref-width: 40px;
+}
+
+.h-box-line {
+    -fx-pref-width: 300px;
+    -fx-pref-height: 20px;
+    -fx-alignment: center;
 }

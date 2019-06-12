@@ -1,5 +1,6 @@
 package ee.kilpkonn.app.controllers;
 
+import ee.kilpkonn.app.Game;
 import ee.kilpkonn.app.board.Board;
 import ee.kilpkonn.app.controllers.components.Banner;
 import ee.kilpkonn.app.controllers.components.BoardCell;
@@ -9,15 +10,14 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class GameController extends Controller {
@@ -33,7 +33,6 @@ public class GameController extends Controller {
     @FXML private Label player1_total_moves;
     @FXML private Label player1_current_moves;
 
-
     @FXML private Label player2_name;
     @FXML private Label player2_games;
     @FXML private Label player2_wins;
@@ -42,10 +41,21 @@ public class GameController extends Controller {
     @FXML private Label player2_total_moves;
     @FXML private Label player2_current_moves;
 
+    @FXML private Button rewind_start;
+    @FXML private Button rewind;
+    @FXML private Button play;
+    @FXML private Button play_move;
+    @FXML private Button play_end;
+
     private Banner banner;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        rewind_start.setOnAction(e -> game.setState(Game.State.REWIND_START));
+        rewind.setOnAction(e -> game.setState(Game.State.REWIND_MOVE));
+        play.setOnAction(e -> game.setState(Game.State.PLAY));
+        play_move.setOnAction(e -> game.setState(Game.State.PLAY_MOVE));
+        play_end.setOnAction(e -> game.setState(Game.State.PLAY_END));
     }
 
 
@@ -67,14 +77,17 @@ public class GameController extends Controller {
 
     public void makeMove(Board.Location location, Player player) {
         Platform.runLater(() -> {
-            var a = board.getChildren().stream()
-                    .filter(c -> ((BoardCell) c).isAt(location))
-                    .collect(Collectors.toList());
-            System.out.println(a);
-
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))
                     .forEach(c -> ((BoardCell) c).placeStone(player));  //Do it just once, no need for optional
+        });
+    }
+
+    public void reverseMove(Board.Location location) {
+        Platform.runLater(() -> {
+            board.getChildren().stream()
+                    .filter(c -> ((BoardCell) c).isAt(location))
+                    .forEach(c -> ((BoardCell) c).removeStone());  //Do it just once, no need for optional
         });
     }
 

@@ -1,6 +1,5 @@
 package ee.kilpkonn.app;
 
-import ee.kilpkonn.app.board.Board;
 import ee.kilpkonn.app.controllers.GameController;
 import ee.kilpkonn.app.controllers.MenuController;
 import ee.kilpkonn.app.player.Player;
@@ -22,6 +21,7 @@ public class Game {
     private Thread gameThread;
     private int gamesCount;
     private Map<Strategy, Player> players;
+    private State state;
 
     public Game(Stage primaryStage, Scene menuScene, Scene gameScene, MenuController menuController,
                 GameController gameController) {
@@ -53,12 +53,39 @@ public class Game {
         gameController.initializeBoard(session.getBoard());
         gameController.updateStats(session.getWhitePlayer(), session.getBlackPlayer());
         primaryStage.setScene(gameScene);
+        state = State.PLAY;
 
         if (gameThread != null && !gameThread.isInterrupted()) gameThread.interrupt();
 
         gameThread = new Thread(() -> {
             while (session.getState() == GameSession.GameState.PLAYING) {
-                session.nextMove();
+                switch (state) {
+                    case PLAY:
+                        session.playMove();
+                        break;
+                    case PLAY_MOVE:
+                        session.nextMove();
+                        setState(State.STOPPED);
+                        break;
+                    case PLAY_END:
+                        while (session.nextMove()) ;
+                        setState(State.STOPPED);
+                        break;
+                    case REWIND_MOVE:
+                        session.previousMove();
+                        setState(State.STOPPED);
+                        break;
+                    case REWIND_START:
+                        while (session.previousMove()) ;
+                        setState(State.STOPPED);
+                        break;
+                    default:
+                        try {
+                            Thread.sleep(10);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                }
             }
 
             switch (session.getState()) {
@@ -103,5 +130,13 @@ public class Game {
         if (gameThread != null) {
             gameThread.interrupt();
         }
+    }
+
+    public enum State {
+        REWIND_START, REWIND_MOVE, PLAY, PLAY_MOVE, PLAY_END, STOPPED
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 }
