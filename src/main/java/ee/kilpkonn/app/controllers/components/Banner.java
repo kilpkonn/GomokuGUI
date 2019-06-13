@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 
 public class Banner extends StackPane {
 
-    public Banner (String text, String smallText,  double width, double height) {
+    public Banner(String text, String smallText, double width, double height) {
         this.setMaxSize(width, height / 3f);
 
         this.setTranslateX(0);

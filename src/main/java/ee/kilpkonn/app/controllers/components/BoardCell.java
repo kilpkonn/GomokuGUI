@@ -12,7 +12,7 @@ public class BoardCell extends Button {
     private Board.Location location;
     private Stone stone;
 
-    public BoardCell (Board.Location location, double size) {
+    public BoardCell(Board.Location location, double size) {
         this.location = location;
         this.getStyleClass().add("board-cell");
         this.setMinSize(size, size);

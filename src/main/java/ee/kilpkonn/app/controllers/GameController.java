@@ -9,7 +9,6 @@ import ee.kilpkonn.app.player.statistics.Statistics;
 import ee.kilpkonn.app.util.Util;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -23,30 +22,51 @@ import java.util.stream.IntStream;
 
 public class GameController extends Controller {
 
-    @FXML private GridPane board;
-    @FXML private StackPane pane;
+    @FXML
+    private GridPane board;
+    @FXML
+    private StackPane pane;
 
-    @FXML private Label player1_name;
-    @FXML private Label player1_games;
-    @FXML private Label player1_wins;
-    @FXML private Label player1_losses;
-    @FXML private Label player1_draws;
-    @FXML private Label player1_total_moves;
-    @FXML private Label player1_current_moves;
+    @FXML
+    private Label player1_name;
+    @FXML
+    private Label player1_games;
+    @FXML
+    private Label player1_wins;
+    @FXML
+    private Label player1_losses;
+    @FXML
+    private Label player1_draws;
+    @FXML
+    private Label player1_total_moves;
+    @FXML
+    private Label player1_current_moves;
 
-    @FXML private Label player2_name;
-    @FXML private Label player2_games;
-    @FXML private Label player2_wins;
-    @FXML private Label player2_losses;
-    @FXML private Label player2_draws;
-    @FXML private Label player2_total_moves;
-    @FXML private Label player2_current_moves;
+    @FXML
+    private Label player2_name;
+    @FXML
+    private Label player2_games;
+    @FXML
+    private Label player2_wins;
+    @FXML
+    private Label player2_losses;
+    @FXML
+    private Label player2_draws;
+    @FXML
+    private Label player2_total_moves;
+    @FXML
+    private Label player2_current_moves;
 
-    @FXML private Button rewind_start;
-    @FXML private Button rewind;
-    @FXML private Button play;
-    @FXML private Button play_move;
-    @FXML private Button play_end;
+    @FXML
+    private Button rewind_start;
+    @FXML
+    private Button rewind;
+    @FXML
+    private Button play;
+    @FXML
+    private Button play_move;
+    @FXML
+    private Button play_end;
 
     private Banner banner;
 
@@ -108,7 +128,7 @@ public class GameController extends Controller {
             this.banner = new Banner(text, smallText, game.getWindowWidth(), game.getWindowHeight());
 
             if (autoClose) {
-                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),
+                Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1.5),
                         e -> pane.getChildren().remove(banner)));
                 timeline.setCycleCount(1);
                 timeline.setOnFinished(e -> game.end());

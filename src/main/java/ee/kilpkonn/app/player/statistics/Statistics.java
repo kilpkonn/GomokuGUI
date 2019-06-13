@@ -73,7 +73,7 @@ public class Statistics {
     }
 
     public float getWinRate() {
-        return  (float) wins / (wins + losses + draws);
+        return (float) wins / (wins + losses + draws);
     }
 
     public float getLossRate() {

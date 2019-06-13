@@ -36,7 +36,7 @@ public class Board {
         }
     }
 
-    public GameSession.GameState getGameState(){
+    public GameSession.GameState getGameState() {
         boolean hasFree = false;
         for (int i = 0; i < height; i++) {
             for (int j = 0; j < width; j++) {
@@ -71,11 +71,11 @@ public class Board {
     }
 
 
-    private boolean rDiagonal(int r, int c){
+    private boolean rDiagonal(int r, int c) {
         Stone sq = matrix[r][c];
         int w = 0;
 
-        for (int x = c, y = r; x < width && y < height; x++,y++) {
+        for (int x = c, y = r; x < width && y < height; x++, y++) {
             if (sq == matrix[y][x]) {
                 w++;
             } else {
@@ -86,11 +86,11 @@ public class Board {
         return (w >= SQUARES_IN_LINE_FOR_WIN);
     }
 
-    private boolean lDiagonal(int r, int c){
+    private boolean lDiagonal(int r, int c) {
         Stone sq = matrix[r][c];
         int w = 0;
 
-        for (int x = c, y = r; x >= 0 && y < height; x--,y++) {
+        for (int x = c, y = r; x >= 0 && y < height; x--, y++) {
             if (sq == matrix[y][x]) {
                 w++;
             } else {
@@ -101,7 +101,7 @@ public class Board {
         return (w >= SQUARES_IN_LINE_FOR_WIN);
     }
 
-    private boolean rightward(int r, int c){
+    private boolean rightward(int r, int c) {
         Stone sq = matrix[r][c];
         int w = 0;
 
@@ -116,7 +116,7 @@ public class Board {
         return (w >= SQUARES_IN_LINE_FOR_WIN);
     }
 
-    private boolean downward(int r, int c){
+    private boolean downward(int r, int c) {
         Stone sq = matrix[r][c];
         int w = 0;
 

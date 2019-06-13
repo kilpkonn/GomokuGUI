@@ -27,7 +27,7 @@ public class Util {
                 try {
                     JarInputStream is = new JarInputStream(new FileInputStream(jar));
                     JarEntry entry;
-                    while((entry = is.getNextJarEntry()) != null) {
+                    while ((entry = is.getNextJarEntry()) != null) {
                         name = entry.getName();
                         if (name.endsWith(".class")) {
                             if (name.contains(path) && name.endsWith(".class")) {

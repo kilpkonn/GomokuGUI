@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 
 public class GameSession {
 
+    private static final Board.Location EMPTY_MOVE = new Board.Location(-1, -1);
     private GameController gameController;
     private Player player1;
     private Player player2;
@@ -24,7 +25,6 @@ public class GameSession {
     private long player2Timeout;
     private List<Board.Location> moves;
     private Board.Location currentMove;
-    private static final Board.Location EMPTY_MOVE = new Board.Location(-1, -1);
 
     public GameSession(GameController gameController, Player player1, Player player2, int boardWidth,
                        int boardHeight, long player1Timeout, long player2Timeout) {

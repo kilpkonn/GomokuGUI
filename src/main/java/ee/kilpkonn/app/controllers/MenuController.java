@@ -15,13 +15,20 @@ import java.util.stream.Collectors;
 
 public class MenuController extends Controller {
 
-    @FXML private ComboBox<Strategy> player1;
-    @FXML private ComboBox<Strategy> player2;
-    @FXML private TextField board_width;
-    @FXML private TextField board_height;
-    @FXML private TextField player1_timeout;
-    @FXML private  TextField player2_timeout;
-    @FXML private  TextField games_count;
+    @FXML
+    private ComboBox<Strategy> player1;
+    @FXML
+    private ComboBox<Strategy> player2;
+    @FXML
+    private TextField board_width;
+    @FXML
+    private TextField board_height;
+    @FXML
+    private TextField player1_timeout;
+    @FXML
+    private TextField player2_timeout;
+    @FXML
+    private TextField games_count;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
