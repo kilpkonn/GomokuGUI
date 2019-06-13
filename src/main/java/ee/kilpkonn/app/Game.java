@@ -41,9 +41,9 @@ public class Game {
         this.gamesCount = gamesCount - 1;  //Game 1 already started
 
         Player player1 = players.containsKey(strategy1) ? players.get(strategy1) : new Player(strategy1);
-        Player player2 = players.containsKey(strategy2) ? players.get(strategy2) : new Player(strategy2);
-
         players.putIfAbsent(strategy1, player1);
+
+        Player player2 = players.containsKey(strategy2) ? players.get(strategy2) : new Player(strategy2);
         players.putIfAbsent(strategy2, player2);
 
         boolean lastGame = gamesCount == 0;

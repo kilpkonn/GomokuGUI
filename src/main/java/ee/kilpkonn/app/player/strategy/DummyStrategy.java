@@ -18,7 +18,7 @@ import java.util.Set;
  * <p>
  * This file here might be overwritten in future versions.
  */
-public class KilpkonnStrategy extends Strategy {
+public class DummyStrategy extends Strategy {
     private Board.Stone[][] currentBoard;
     private short[][] currentWeightedBoard;
     private Set<Pair<Integer, Integer>> checkedRows = new HashSet<>();
@@ -407,6 +407,6 @@ public class KilpkonnStrategy extends Strategy {
 
     @Override
     public String getName() {
-        return "Tavo & Enrico";
+        return "No minmax";
     }
 }

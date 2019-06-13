@@ -58,7 +58,6 @@ public class Player {
     }
 
     public void setIsWhite(boolean isWhite) {
-        System.out.println(isWhite);
         this.isWhite = isWhite;
         this.color = strategy.getColor(isWhite);
     }

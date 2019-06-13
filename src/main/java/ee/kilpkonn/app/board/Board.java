@@ -42,7 +42,6 @@ public class Board {
             for (int j = 0; j < width; j++) {
                 if (matrix[i][j] != null) {
                     if (downward(i, j) || rightward(i, j) || lDiagonal(i, j) || rDiagonal(i, j)) {
-                        System.out.println("Win");
                         return matrix[i][j] == Stone.WHITE ? GameSession.GameState.WHITE_WON :
                                 GameSession.GameState.BLACK_WON;
                     }

@@ -61,8 +61,8 @@ public class MenuController extends Controller {
             int boardWidth = Integer.parseInt(board_width.getText());
             int boardHeight = Integer.parseInt(board_height.getText());
             int gamesCount = Integer.parseInt(games_count.getText());
-            long player1Timeout = 1000000000 * Integer.parseInt(player1_timeout.getText());
-            long player2Timeout = 1000000000 * Integer.parseInt(player2_timeout.getText());
+            long player1Timeout = Math.round(1000000000 * Double.parseDouble(player1_timeout.getText()));
+            long player2Timeout = Math.round(1000000000 * Double.parseDouble(player2_timeout.getText()));
 
             game.start(player1.getValue(), player2.getValue(),
                     boardWidth > 2 ? boardWidth : 3,
