@@ -15,27 +15,29 @@ import java.util.stream.Collectors;
 public class GameSession {
 
     private GameController gameController;
-    private Player whitePlayer;
-    private Player blackPlayer;
+    private Player player1;
+    private Player player2;
     private Board board;
     private GameState state;
-    private boolean whiteToMove = true;
-    private long timeout = 1000 * 5;
+    private boolean whiteToMove;
+    private long player1Timeout;
+    private long player2Timeout;
     private List<Board.Location> moves;
     private Board.Location currentMove;
     private static final Board.Location EMPTY_MOVE = new Board.Location(-1, -1);
 
-    public GameSession(GameController gameController, Player whitePlayer, Player blackPlayer, int boardWidth,
-                       int boardHeight) {
+    public GameSession(GameController gameController, Player player1, Player player2, int boardWidth,
+                       int boardHeight, long player1Timeout, long player2Timeout) {
         this.gameController = gameController;
-        this.whitePlayer = whitePlayer;
-        this.blackPlayer = blackPlayer;
-        whitePlayer.setIsWhite(true);
-        blackPlayer.setIsWhite(false);
+        this.player1 = player1;
+        this.player2 = player2;
+        this.player1Timeout = player1Timeout;
+        this.player2Timeout = player2Timeout;
 
         moves = new ArrayList<>();
         board = new Board(boardWidth, boardHeight);
         state = GameState.PLAYING;
+        whiteToMove = true;
     }
 
     public void playMove() {
@@ -48,14 +50,16 @@ public class GameSession {
 
         try {
             if (whiteToMove) {
-                currentMove = whitePlayer.getMove(board, timeout);
+                player1.setIsWhite(true);
+                currentMove = player1.getMove(board, player1Timeout);
                 board.makeMove(currentMove, Board.Stone.WHITE);
             } else {
-                currentMove = blackPlayer.getMove(board, timeout);
+                player2.setIsWhite(false);
+                currentMove = player2.getMove(board, player2Timeout);
                 board.makeMove(currentMove, Board.Stone.BLACK);
             }
-            gameController.makeMove(currentMove, whiteToMove ? whitePlayer : blackPlayer);
-            gameController.updateStats(whitePlayer, blackPlayer);
+            gameController.makeMove(currentMove, whiteToMove ? player1 : player2);
+            gameController.updateStats(player1, player2);
 
             moves.add(currentMove);
 
@@ -79,7 +83,7 @@ public class GameSession {
         currentMove = moves.get(index);
         try {
             board.makeMove(currentMove, whiteToMove ? Board.Stone.WHITE : Board.Stone.BLACK);
-            gameController.makeMove(currentMove, whiteToMove ? whitePlayer : blackPlayer);
+            gameController.makeMove(currentMove, whiteToMove ? player1 : player2);
         } catch (LocationOccupiedException e) {
             e.printStackTrace();
         } finally {
@@ -109,25 +113,25 @@ public class GameSession {
 
     public void cancelMove() {
         if (whiteToMove) {
-            whitePlayer.cancelThinking();
+            player1.cancelThinking();
         } else {
-            blackPlayer.cancelThinking();
+            player2.cancelThinking();
         }
     }
 
     public void submitGame() {
         switch (state) {
             case WHITE_WON:
-                whitePlayer.submitGame(Statistics.Result.WIN);
-                blackPlayer.submitGame(Statistics.Result.LOSS);
+                player1.submitGame(Statistics.Result.WIN);
+                player2.submitGame(Statistics.Result.LOSS);
                 break;
             case BLACK_WON:
-                whitePlayer.submitGame(Statistics.Result.LOSS);
-                blackPlayer.submitGame(Statistics.Result.WIN);
+                player1.submitGame(Statistics.Result.LOSS);
+                player2.submitGame(Statistics.Result.WIN);
                 break;
             case DRAW:
-                whitePlayer.submitGame(Statistics.Result.DRAW);
-                blackPlayer.submitGame(Statistics.Result.DRAW);
+                player1.submitGame(Statistics.Result.DRAW);
+                player2.submitGame(Statistics.Result.DRAW);
                 break;
         }
     }
@@ -136,12 +140,20 @@ public class GameSession {
         return state;
     }
 
-    public Player getWhitePlayer() {
-        return whitePlayer;
+    public Player getPlayer1() {
+        return player1;
     }
 
-    public Player getBlackPlayer() {
-        return blackPlayer;
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public long getPlayer1Timeout() {
+        return player1Timeout;
+    }
+
+    public long getPlayer2Timeout() {
+        return player2Timeout;
     }
 
     public Board getBoard() {

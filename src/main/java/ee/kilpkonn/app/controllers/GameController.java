@@ -6,6 +6,7 @@ import ee.kilpkonn.app.controllers.components.Banner;
 import ee.kilpkonn.app.controllers.components.BoardCell;
 import ee.kilpkonn.app.player.Player;
 import ee.kilpkonn.app.player.statistics.Statistics;
+import ee.kilpkonn.app.util.Util;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
@@ -84,7 +85,7 @@ public class GameController extends Controller {
     }
 
     public void makeMove(Board.Location location, Player player) {
-        Platform.runLater(() -> {
+        Util.updateFX(() -> {
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))
                     .forEach(c -> ((BoardCell) c).placeStone(player));  //Do it just once, no need for optional
@@ -92,7 +93,7 @@ public class GameController extends Controller {
     }
 
     public void reverseMove(Board.Location location) {
-        Platform.runLater(() -> {
+        Util.updateFX(() -> {
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))
                     .forEach(c -> ((BoardCell) c).removeStone());  //Do it just once, no need for optional
@@ -100,7 +101,7 @@ public class GameController extends Controller {
     }
 
     public void showBanner(String text, boolean autoClose) {
-        Platform.runLater(() -> {
+        Util.updateFX(() -> {
             if (banner != null) {
                 pane.getChildren().remove(banner);
             }
@@ -120,7 +121,7 @@ public class GameController extends Controller {
     }
 
     public void updateStats(Player player1, Player player2) {
-        Platform.runLater(() -> {
+        Util.updateFX(() -> {
             updatePlayerStats(player1, player1_name, player1.getName(), player1_games, player1_wins, player1_losses, player1_draws, player1_total_moves, player1_current_moves);
             updatePlayerStats(player2, player2_name, player2.getName(), player2_games, player2_wins, player2_losses,
                     player2_draws, player2_total_moves, player2_current_moves);

@@ -1,9 +1,13 @@
 package ee.kilpkonn.app.util;
 
+import javafx.application.Platform;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 import java.util.jar.JarEntry;
 import java.util.jar.JarInputStream;
 
@@ -53,5 +57,20 @@ public class Util {
         }
 
         return classes;
+    }
+
+    public static void updateFX(Runnable runnable) {
+        try {
+            if (Platform.isFxApplicationThread()) {
+                runnable.run();
+            } else {
+                FutureTask<Void> task = new FutureTask<>(runnable, null);
+                Platform.runLater(task);
+                // block until task completes:
+                task.get();
+            }
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+        }
     }
 }

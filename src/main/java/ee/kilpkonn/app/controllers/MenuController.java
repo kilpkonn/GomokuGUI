@@ -61,13 +61,17 @@ public class MenuController extends Controller {
             int boardWidth = Integer.parseInt(board_width.getText());
             int boardHeight = Integer.parseInt(board_height.getText());
             int gamesCount = Integer.parseInt(games_count.getText());
+            long player1Timeout = 1000000000 * Integer.parseInt(player1_timeout.getText());
+            long player2Timeout = 1000000000 * Integer.parseInt(player2_timeout.getText());
 
             game.start(player1.getValue(), player2.getValue(),
                     boardWidth > 2 ? boardWidth : 3,
                     boardHeight > 2 ? boardHeight : 3,
-                    gamesCount);
+                    gamesCount,
+                    player1Timeout,
+                    player2Timeout);
         } catch (NumberFormatException e) {
-            System.out.println("Board width, height & games count have to be numbers!");
+            System.out.println("Board width, height, games count & timeouts have to be numbers!");
         }
     }
 }

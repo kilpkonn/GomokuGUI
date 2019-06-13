@@ -36,22 +36,21 @@ public class Game {
         primaryStage.setScene(menuScene);
     }
 
-    public void start(Strategy strategy1, Strategy strategy2, int boardWidth, int boardHeight, int gamesCount) {
+    public void start(Strategy strategy1, Strategy strategy2, int boardWidth, int boardHeight, int gamesCount,
+                      long player1Timeout, long player2Timeout) {
         this.gamesCount = gamesCount - 1;  //Game 1 already started
-        Player player1 = players.containsKey(strategy1) ? players.get(strategy1) : new Player(strategy1);
-        Player player2 = players.containsKey(strategy2) && strategy1 != strategy2 ? players.get(strategy2) :
-                new Player(strategy2);
 
-        //TODO: Handle multiple same strategies better;
+        Player player1 = players.containsKey(strategy1) ? players.get(strategy1) : new Player(strategy1);
+        Player player2 = players.containsKey(strategy2) ? players.get(strategy2) : new Player(strategy2);
 
         players.putIfAbsent(strategy1, player1);
         players.putIfAbsent(strategy2, player2);
 
         boolean lastGame = gamesCount == 0;
 
-        this.session = new GameSession(gameController, player1, player2, boardWidth, boardHeight);
+        this.session = new GameSession(gameController, player1, player2, boardWidth, boardHeight, player1Timeout, player2Timeout);
         gameController.initializeBoard(session.getBoard());
-        gameController.updateStats(session.getWhitePlayer(), session.getBlackPlayer());
+        gameController.updateStats(session.getPlayer1(), session.getPlayer2());
         primaryStage.setScene(gameScene);
         state = State.PLAY;
 
@@ -64,7 +63,7 @@ public class Game {
                         session.playMove();
                         break;
                     case PLAY_MOVE:
-                        session.nextMove();
+                        if (!session.nextMove()) session.playMove();
                         setState(State.STOPPED);
                         break;
                     case PLAY_END:
@@ -110,11 +109,13 @@ public class Game {
     public void end() {
         primaryStage.setScene(menuScene);  //needed for banner fix?
         if (gamesCount > 0) {
-            start(session.getBlackPlayer().getStrategy(),
-                    session.getWhitePlayer().getStrategy(),
+            start(session.getPlayer2().getStrategy(),
+                    session.getPlayer1().getStrategy(),
                     session.getBoard().getWidth(),
                     session.getBoard().getHeight(),
-                    gamesCount);
+                    gamesCount,
+                    session.getPlayer2Timeout(),
+                    session.getPlayer1Timeout());
         }
     }
 
