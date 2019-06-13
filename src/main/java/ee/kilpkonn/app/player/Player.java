@@ -6,6 +6,8 @@ import ee.kilpkonn.app.player.statistics.Statistics;
 import ee.kilpkonn.app.player.strategy.Strategy;
 import javafx.scene.paint.Paint;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.Callable;
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.ExecutionException;
@@ -19,10 +21,12 @@ public class Player {
 
     private Strategy strategy;
     private Statistics stats;
+    private Map<Player, Statistics> headToHeadStats = new HashMap<>();
     private ExecutorService executor = Executors.newSingleThreadExecutor();
     private Future<Board.Location> future;
     private Paint color;
     private boolean isWhite;
+    private Player opponent;
 
     public Player(Strategy strategy) {
         this.strategy = strategy;
@@ -38,7 +42,9 @@ public class Player {
             long start = System.nanoTime();
             move = future.get(timeout, TimeUnit.MILLISECONDS);
             long end = System.nanoTime();
-            stats.addMove((end - start) / Math.pow(10, 9));
+            double dt = (end - start) / Math.pow(10, 9);
+            stats.addMove(dt);
+            headToHeadStats.get(opponent).addMove(dt);
 
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
@@ -55,6 +61,12 @@ public class Player {
 
     public void submitGame(Statistics.Result result) {
         stats.submitGame(result);
+        headToHeadStats.get(opponent).submitGame(result);
+    }
+
+    public void setOpponent(Player opponent) {
+        headToHeadStats.putIfAbsent(opponent, new Statistics());
+        this.opponent = opponent;
     }
 
     public void setIsWhite(boolean isWhite) {
@@ -80,6 +92,10 @@ public class Player {
         public Board.Location call() {
             return strategy.getMove(board, isWhite);
         }
+    }
+
+    public Statistics getStats(Player opponent) {
+        return headToHeadStats.get(opponent);
     }
 
     public Statistics getStats() {

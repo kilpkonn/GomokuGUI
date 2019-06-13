@@ -34,6 +34,9 @@ public class GameSession {
         this.player1Timeout = player1Timeout;
         this.player2Timeout = player2Timeout;
 
+        player1.setOpponent(player2);
+        player2.setOpponent(player1);
+
         moves = new ArrayList<>();
         board = new Board(boardWidth, boardHeight);
         state = GameState.PLAYING;

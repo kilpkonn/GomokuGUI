@@ -23,10 +23,24 @@
     -fx-opacity: 1;
 }
 
+.banner-vbox {
+    -fx-alignment: center;
+    -fx-pref-width: 800;
+}
+
 .banner-label {
     -fx-font-family: 'Allerta Stencil';
     -fx-font-size: 28px;
     -fx-font-weight: bold;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+.banner-small-label {
+    -fx-font-family: 'Allerta Stencil';
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
 }
 
 .banner-pane {

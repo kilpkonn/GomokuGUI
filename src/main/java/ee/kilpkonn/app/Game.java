@@ -87,21 +87,28 @@ public class Game {
                 }
             }
 
+            session.submitGame();
+
+            String bannerSmallText = String.format("(%s %d - %d %s)",
+                    player1.getName(),
+                    player1.getStats(player2).getWins(),
+                    player2.getStats(player1).getWins(),
+                    player2.getName());
+
             switch (session.getState()) {
                 case WHITE_WON:
-                    gameController.showBanner("White Won!", !lastGame);
+                    gameController.showBanner("White Won!", bannerSmallText, !lastGame);
                     break;
                 case BLACK_WON:
-                    gameController.showBanner("Black Won!", !lastGame);
+                    gameController.showBanner("Black Won!", bannerSmallText, !lastGame);
                     break;
                 case DRAW:
-                    gameController.showBanner("Draw.", !lastGame);
+                    gameController.showBanner("Draw.", bannerSmallText, !lastGame);
                     break;
                 default:
                     System.out.println("Illegal game state, SumTingWong!");
                     break;
             }
-            session.submitGame();
         });
         gameThread.start();
     }

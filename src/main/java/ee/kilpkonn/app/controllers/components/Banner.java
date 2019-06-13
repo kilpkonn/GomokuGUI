@@ -3,10 +3,11 @@ package ee.kilpkonn.app.controllers.components;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class Banner extends StackPane {
 
-    public Banner (String text, double width, double height) {
+    public Banner (String text, String smallText,  double width, double height) {
         this.setMaxSize(width, height / 3f);
 
         this.setTranslateX(0);
@@ -15,9 +16,17 @@ public class Banner extends StackPane {
 
         this.getStyleClass().add("banner-pane");
 
+        VBox vBox = new VBox();
+        vBox.getStyleClass().add("banner-vbox");
+        this.getChildren().add(vBox);
+
         Label label = new Label(text);
         label.getStyleClass().add("banner-label");
 
-        this.getChildren().add(label);
+        Label smallLabel = new Label(smallText);
+        smallLabel.getStyleClass().add("banner-small-label");
+
+        vBox.getChildren().add(label);
+        vBox.getChildren().add(smallLabel);
     }
 }

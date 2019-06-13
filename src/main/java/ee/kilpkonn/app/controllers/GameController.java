@@ -100,12 +100,12 @@ public class GameController extends Controller {
         });
     }
 
-    public void showBanner(String text, boolean autoClose) {
+    public void showBanner(String text, String smallText, boolean autoClose) {
         Util.updateFX(() -> {
             if (banner != null) {
                 pane.getChildren().remove(banner);
             }
-            this.banner = new Banner(text, game.getWindowWidth(), game.getWindowHeight());
+            this.banner = new Banner(text, smallText, game.getWindowWidth(), game.getWindowHeight());
 
             if (autoClose) {
                 Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(1),
