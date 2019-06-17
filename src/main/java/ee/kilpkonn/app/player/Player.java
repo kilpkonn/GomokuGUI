@@ -40,7 +40,7 @@ public class Player {
 
         try {
             long start = System.nanoTime();
-            move = future.get(timeout, TimeUnit.MILLISECONDS);
+            move = future.get(timeout, TimeUnit.NANOSECONDS);
             long end = System.nanoTime();
             double dt = (end - start) / Math.pow(10, 9);
             stats.addMove(dt);
