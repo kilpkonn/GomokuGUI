@@ -30,3 +30,11 @@ sourceSets {
         }
     }
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ee.kilpkonn.Launcher'
+        )
+    }
+}

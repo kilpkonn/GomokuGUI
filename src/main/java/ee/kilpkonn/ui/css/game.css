@@ -83,7 +83,7 @@
     -fx-font-size: 38px;
     -fx-font-weight: bold;
     -fx-text-alignment: center;
-    -fx-padding: 0px;
+    -fx-padding: 5px, 0px, 5px, 5px;
 }
 
 .lbl-credit {
