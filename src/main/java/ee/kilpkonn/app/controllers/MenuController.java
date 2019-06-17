@@ -3,6 +3,7 @@ package ee.kilpkonn.app.controllers;
 import ee.kilpkonn.app.player.strategy.Strategy;
 import ee.kilpkonn.app.util.Util;
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
@@ -29,6 +30,8 @@ public class MenuController extends Controller {
     private TextField player2_timeout;
     @FXML
     private TextField games_count;
+    @FXML
+    private CheckBox show_head_to_head;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,13 +73,15 @@ public class MenuController extends Controller {
             int gamesCount = Integer.parseInt(games_count.getText());
             long player1Timeout = Math.round(1000000000 * Double.parseDouble(player1_timeout.getText()));
             long player2Timeout = Math.round(1000000000 * Double.parseDouble(player2_timeout.getText()));
+            boolean showHeadToHead = show_head_to_head.isSelected();
 
             game.start(player1.getValue(), player2.getValue(),
                     boardWidth > 2 ? boardWidth : 3,
                     boardHeight > 2 ? boardHeight : 3,
                     gamesCount,
                     player1Timeout,
-                    player2Timeout);
+                    player2Timeout,
+                    showHeadToHead);
         } catch (NumberFormatException e) {
             System.out.println("Board width, height, games count & timeouts have to be numbers!");
         }

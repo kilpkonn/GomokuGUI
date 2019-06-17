@@ -61,7 +61,7 @@
 
 .stats-pane {
     -fx-pref-width: 300px;
-    -fx-pref-height: 200px;
+    -fx-pref-height: 195px;
     -fx-alignment: center;
 }
 
@@ -96,7 +96,7 @@
 
 .btn-replay {
     -fx-font-family: 'Allerta Stencil';
-    -fx-padding: 3px;
+    -fx-padding: 5px;
     -fx-pref-width: 40px;
 }
 

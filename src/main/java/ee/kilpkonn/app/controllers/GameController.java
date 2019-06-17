@@ -140,16 +140,28 @@ public class GameController extends Controller {
         });
     }
 
-    public void updateStats(Player player1, Player player2) {
+    public void updateStats(Player player1, Player player2, boolean headToHead) {
         Util.updateFX(() -> {
-            updatePlayerStats(player1, player1_name, player1.getName(), player1_games, player1_wins, player1_losses, player1_draws, player1_total_moves, player1_current_moves);
-            updatePlayerStats(player2, player2_name, player2.getName(), player2_games, player2_wins, player2_losses,
+            updatePlayerStats(headToHead ? player1.getStats(player2) : player1.getStats(),
+                    player1_name,
+                    player1.getName(),
+                    player1_games,
+                    player1_wins,
+                    player1_losses,
+                    player1_draws, player1_total_moves, player1_current_moves);
+            updatePlayerStats(headToHead ? player2.getStats(player1) : player2.getStats(),
+                    player2_name,
+                    player2.getName(),
+                    player2_games,
+                    player2_wins,
+                    player2_losses,
                     player2_draws, player2_total_moves, player2_current_moves);
         });
     }
 
-    private void updatePlayerStats(Player player1, Label player1_name, String name, Label player1_games, Label player1_wins, Label player1_losses, Label player1_draws, Label player1_total_moves, Label player1_current_moves) {
-        Statistics player1Stats = player1.getStats();
+    private void updatePlayerStats( Statistics player1Stats, Label player1_name, String name, Label player1_games,
+                                   Label player1_wins, Label player1_losses, Label player1_draws,
+                                   Label player1_total_moves, Label player1_current_moves) {
         player1_name.setText(name + ":");
         player1_games.setText(String.format("Games: %d", player1Stats.getTotalGamesCount()));
         player1_wins.setText(String.format("Wins: %d (%d%%)", player1Stats.getWins(),

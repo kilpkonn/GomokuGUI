@@ -25,14 +25,16 @@ public class GameSession {
     private long player2Timeout;
     private List<Board.Location> moves;
     private Board.Location currentMove;
+    private boolean showHeadToHeadStats;
 
     public GameSession(GameController gameController, Player player1, Player player2, int boardWidth,
-                       int boardHeight, long player1Timeout, long player2Timeout) {
+                       int boardHeight, long player1Timeout, long player2Timeout, boolean showHeadToHeadStats) {
         this.gameController = gameController;
         this.player1 = player1;
         this.player2 = player2;
         this.player1Timeout = player1Timeout;
         this.player2Timeout = player2Timeout;
+        this.showHeadToHeadStats = showHeadToHeadStats;
 
         player1.setOpponent(player2);
         player2.setOpponent(player1);
@@ -62,7 +64,7 @@ public class GameSession {
                 board.makeMove(currentMove, Board.Stone.BLACK);
             }
             gameController.makeMove(currentMove, whiteToMove ? player1 : player2);
-            gameController.updateStats(player1, player2);
+            gameController.updateStats(player1, player2, showHeadToHeadStats);
 
             moves.add(currentMove);
 
@@ -157,6 +159,10 @@ public class GameSession {
 
     public long getPlayer2Timeout() {
         return player2Timeout;
+    }
+
+    public boolean isShowHeadToHeadStats() {
+        return showHeadToHeadStats;
     }
 
     public Board getBoard() {

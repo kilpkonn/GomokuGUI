@@ -10,6 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.CheckBox?>
 <AnchorPane styleClass="anchor-pane" stylesheets="@css/menu.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane styleClass="background-pane">
@@ -70,6 +71,12 @@
                                  <children>
                                     <Label text="Best of:"/>
                                     <TextField fx:id="games_count" text="1"/>
+                                 </children>
+                              </HBox>
+                              <HBox styleClass="h-box-line">
+                                 <children>
+                                    <Label text="Show head to stats if possible"/>
+                                    <CheckBox fx:id="show_head_to_head"/>
                                  </children>
                               </HBox>
                            </children>

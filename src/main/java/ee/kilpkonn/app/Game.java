@@ -37,7 +37,7 @@ public class Game {
     }
 
     public void start(Strategy strategy1, Strategy strategy2, int boardWidth, int boardHeight, int gamesCount,
-                      long player1Timeout, long player2Timeout) {
+                      long player1Timeout, long player2Timeout, boolean showHeadToHead) {
         this.gamesCount = gamesCount - 1;  //Game 1 already started
 
         Player player1 = players.containsKey(strategy1) ? players.get(strategy1) : new Player(strategy1);
@@ -48,9 +48,10 @@ public class Game {
 
         boolean lastGame = gamesCount == 0;
 
-        this.session = new GameSession(gameController, player1, player2, boardWidth, boardHeight, player1Timeout, player2Timeout);
+        this.session = new GameSession(gameController, player1, player2, boardWidth, boardHeight, player1Timeout,
+                player2Timeout, showHeadToHead);
         gameController.initializeBoard(session.getBoard());
-        gameController.updateStats(session.getPlayer1(), session.getPlayer2());
+        gameController.updateStats(session.getPlayer1(), session.getPlayer2(), showHeadToHead);
         primaryStage.setScene(gameScene);
         state = State.PLAY;
 
@@ -122,7 +123,8 @@ public class Game {
                     session.getBoard().getHeight(),
                     gamesCount,
                     session.getPlayer2Timeout(),
-                    session.getPlayer1Timeout());
+                    session.getPlayer1Timeout(),
+                    session.isShowHeadToHeadStats());
         }
     }
 
