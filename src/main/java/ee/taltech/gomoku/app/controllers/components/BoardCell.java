@@ -1,8 +1,8 @@
-package ee.kilpkonn.app.controllers.components;
+package ee.taltech.gomoku.app.controllers.components;
 
-import ee.kilpkonn.app.board.Board;
-import ee.kilpkonn.app.player.Player;
-import ee.kilpkonn.app.player.strategy.HumanStrategy;
+import ee.taltech.gomoku.app.board.Board;
+import ee.taltech.gomoku.app.player.Player;
+import ee.taltech.gomoku.app.player.strategy.HumanStrategy;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;

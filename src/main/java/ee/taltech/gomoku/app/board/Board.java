@@ -1,7 +1,7 @@
-package ee.kilpkonn.app.board;
+package ee.taltech.gomoku.app.board;
 
-import ee.kilpkonn.app.GameSession;
-import ee.kilpkonn.app.exceptions.LocationOccupiedException;
+import ee.taltech.gomoku.app.GameSession;
+import ee.taltech.gomoku.app.exceptions.LocationOccupiedException;
 
 import java.util.Objects;
 

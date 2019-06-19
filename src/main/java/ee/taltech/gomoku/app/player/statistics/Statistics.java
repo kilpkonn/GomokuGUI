@@ -1,4 +1,4 @@
-package ee.kilpkonn.app.player.statistics;
+package ee.taltech.gomoku.app.player.statistics;
 
 public class Statistics {
     private int wins = 0;

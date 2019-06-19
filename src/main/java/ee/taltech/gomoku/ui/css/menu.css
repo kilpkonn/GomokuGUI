@@ -97,6 +97,7 @@
     -fx-padding: 2px;
     -fx-pref-width: 35px;
     -fx-text-alignment: center;
+    -fx-alignment: center;
 }
 
 .h-box-advanced {

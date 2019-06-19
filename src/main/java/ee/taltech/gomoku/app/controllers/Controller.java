@@ -1,6 +1,6 @@
-package ee.kilpkonn.app.controllers;
+package ee.taltech.gomoku.app.controllers;
 
-import ee.kilpkonn.app.Game;
+import ee.taltech.gomoku.app.Game;
 import javafx.fxml.Initializable;
 
 public abstract class Controller implements Initializable {

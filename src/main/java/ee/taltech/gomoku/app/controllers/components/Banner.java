@@ -1,4 +1,4 @@
-package ee.kilpkonn.app.controllers.components;
+package ee.taltech.gomoku.app.controllers.components;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;

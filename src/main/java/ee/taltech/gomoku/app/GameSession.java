@@ -1,11 +1,11 @@
-package ee.kilpkonn.app;
+package ee.taltech.gomoku.app;
 
-import ee.kilpkonn.app.board.Board;
-import ee.kilpkonn.app.controllers.GameController;
-import ee.kilpkonn.app.exceptions.LocationOccupiedException;
-import ee.kilpkonn.app.exceptions.ThinkingTimeoutException;
-import ee.kilpkonn.app.player.Player;
-import ee.kilpkonn.app.player.statistics.Statistics;
+import ee.taltech.gomoku.app.board.Board;
+import ee.taltech.gomoku.app.controllers.GameController;
+import ee.taltech.gomoku.app.exceptions.LocationOccupiedException;
+import ee.taltech.gomoku.app.exceptions.ThinkingTimeoutException;
+import ee.taltech.gomoku.app.player.Player;
+import ee.taltech.gomoku.app.player.statistics.Statistics;
 
 import java.util.ArrayList;
 import java.util.List;

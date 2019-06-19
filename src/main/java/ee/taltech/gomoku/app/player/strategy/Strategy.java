@@ -1,6 +1,6 @@
-package ee.kilpkonn.app.player.strategy;
+package ee.taltech.gomoku.app.player.strategy;
 
-import ee.kilpkonn.app.board.Board;
+import ee.taltech.gomoku.app.board.Board;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.Paint;

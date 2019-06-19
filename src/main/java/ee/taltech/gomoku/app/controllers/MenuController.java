@@ -1,7 +1,7 @@
-package ee.kilpkonn.app.controllers;
+package ee.taltech.gomoku.app.controllers;
 
-import ee.kilpkonn.app.player.strategy.Strategy;
-import ee.kilpkonn.app.util.Util;
+import ee.taltech.gomoku.app.player.strategy.Strategy;
+import ee.taltech.gomoku.app.util.Util;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;

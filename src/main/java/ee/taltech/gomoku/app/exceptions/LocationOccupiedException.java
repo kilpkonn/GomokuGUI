@@ -1,4 +1,4 @@
-package ee.kilpkonn.app.exceptions;
+package ee.taltech.gomoku.app.exceptions;
 
 public class LocationOccupiedException extends Exception {
 

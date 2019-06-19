@@ -1,8 +1,8 @@
-package ee.kilpkonn;
+package ee.taltech.gomoku;
 
-import ee.kilpkonn.app.Game;
-import ee.kilpkonn.app.controllers.GameController;
-import ee.kilpkonn.app.controllers.MenuController;
+import ee.taltech.gomoku.app.Game;
+import ee.taltech.gomoku.app.controllers.GameController;
+import ee.taltech.gomoku.app.controllers.MenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

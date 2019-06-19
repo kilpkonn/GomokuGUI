@@ -1,9 +1,9 @@
-package ee.kilpkonn.app;
+package ee.taltech.gomoku.app;
 
-import ee.kilpkonn.app.controllers.GameController;
-import ee.kilpkonn.app.controllers.MenuController;
-import ee.kilpkonn.app.player.Player;
-import ee.kilpkonn.app.player.strategy.Strategy;
+import ee.taltech.gomoku.app.controllers.GameController;
+import ee.taltech.gomoku.app.controllers.MenuController;
+import ee.taltech.gomoku.app.player.Player;
+import ee.taltech.gomoku.app.player.strategy.Strategy;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

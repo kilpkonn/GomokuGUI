@@ -1,4 +1,4 @@
-package ee.kilpkonn.app.util;
+package ee.taltech.gomoku.app.util;
 
 import javafx.application.Platform;
 

@@ -1,9 +1,9 @@
-package ee.kilpkonn.app.player;
+package ee.taltech.gomoku.app.player;
 
-import ee.kilpkonn.app.board.Board;
-import ee.kilpkonn.app.exceptions.ThinkingTimeoutException;
-import ee.kilpkonn.app.player.statistics.Statistics;
-import ee.kilpkonn.app.player.strategy.Strategy;
+import ee.taltech.gomoku.app.board.Board;
+import ee.taltech.gomoku.app.exceptions.ThinkingTimeoutException;
+import ee.taltech.gomoku.app.player.statistics.Statistics;
+import ee.taltech.gomoku.app.player.strategy.Strategy;
 import javafx.scene.paint.Paint;
 
 import java.util.HashMap;

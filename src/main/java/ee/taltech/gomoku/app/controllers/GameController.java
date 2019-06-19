@@ -1,12 +1,12 @@
-package ee.kilpkonn.app.controllers;
+package ee.taltech.gomoku.app.controllers;
 
-import ee.kilpkonn.app.Game;
-import ee.kilpkonn.app.board.Board;
-import ee.kilpkonn.app.controllers.components.Banner;
-import ee.kilpkonn.app.controllers.components.BoardCell;
-import ee.kilpkonn.app.player.Player;
-import ee.kilpkonn.app.player.statistics.Statistics;
-import ee.kilpkonn.app.util.Util;
+import ee.taltech.gomoku.app.Game;
+import ee.taltech.gomoku.app.board.Board;
+import ee.taltech.gomoku.app.controllers.components.Banner;
+import ee.taltech.gomoku.app.controllers.components.BoardCell;
+import ee.taltech.gomoku.app.player.Player;
+import ee.taltech.gomoku.app.player.statistics.Statistics;
+import ee.taltech.gomoku.app.util.Util;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
