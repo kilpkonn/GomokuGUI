@@ -1,12 +1,12 @@
-package ee.taltech.gomoku.app.controllers;
+package ee.taltech.iti0202.gomoku.app.controllers;
 
-import ee.taltech.gomoku.app.Game;
-import ee.taltech.gomoku.app.board.Board;
 import ee.taltech.gomoku.app.controllers.components.Banner;
-import ee.taltech.gomoku.app.controllers.components.BoardCell;
-import ee.taltech.gomoku.app.player.Player;
-import ee.taltech.gomoku.app.player.statistics.Statistics;
 import ee.taltech.gomoku.app.util.Util;
+import ee.taltech.iti0202.gomoku.app.Game;
+import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.controllers.components.BoardCell;
+import ee.taltech.iti0202.gomoku.app.player.Player;
+import ee.taltech.iti0202.gomoku.app.player.statistics.Statistics;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -159,7 +159,7 @@ public class GameController extends Controller {
         });
     }
 
-    private void updatePlayerStats( Statistics player1Stats, Label player1_name, String name, Label player1_games,
+    private void updatePlayerStats(Statistics player1Stats, Label player1_name, String name, Label player1_games,
                                    Label player1_wins, Label player1_losses, Label player1_draws,
                                    Label player1_total_moves, Label player1_current_moves) {
         player1_name.setText(name + ":");

@@ -1,11 +1,11 @@
-package ee.taltech.gomoku.app;
+package ee.taltech.iti0202.gomoku.app;
 
-import ee.taltech.gomoku.app.board.Board;
-import ee.taltech.gomoku.app.controllers.GameController;
-import ee.taltech.gomoku.app.exceptions.LocationOccupiedException;
-import ee.taltech.gomoku.app.exceptions.ThinkingTimeoutException;
-import ee.taltech.gomoku.app.player.Player;
-import ee.taltech.gomoku.app.player.statistics.Statistics;
+import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.controllers.GameController;
+import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
+import ee.taltech.iti0202.gomoku.app.exceptions.ThinkingTimeoutException;
+import ee.taltech.iti0202.gomoku.app.player.Player;
+import ee.taltech.iti0202.gomoku.app.player.statistics.Statistics;
 
 import java.util.ArrayList;
 import java.util.List;

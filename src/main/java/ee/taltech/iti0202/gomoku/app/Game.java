@@ -1,9 +1,9 @@
-package ee.taltech.gomoku.app;
+package ee.taltech.iti0202.gomoku.app;
 
-import ee.taltech.gomoku.app.controllers.GameController;
-import ee.taltech.gomoku.app.controllers.MenuController;
-import ee.taltech.gomoku.app.player.Player;
-import ee.taltech.gomoku.app.player.strategy.Strategy;
+import ee.taltech.iti0202.gomoku.app.controllers.GameController;
+import ee.taltech.iti0202.gomoku.app.controllers.MenuController;
+import ee.taltech.iti0202.gomoku.app.player.Player;
+import ee.taltech.iti0202.gomoku.app.player.strategy.Strategy;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 

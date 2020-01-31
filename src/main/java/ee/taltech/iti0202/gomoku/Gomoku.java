@@ -1,8 +1,8 @@
-package ee.taltech.gomoku;
+package ee.taltech.iti0202.gomoku;
 
-import ee.taltech.gomoku.app.Game;
-import ee.taltech.gomoku.app.controllers.GameController;
-import ee.taltech.gomoku.app.controllers.MenuController;
+import ee.taltech.iti0202.gomoku.app.Game;
+import ee.taltech.iti0202.gomoku.app.controllers.GameController;
+import ee.taltech.iti0202.gomoku.app.controllers.MenuController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

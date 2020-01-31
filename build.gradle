@@ -20,7 +20,7 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = 'ee.taltech.Launcher'
+mainClassName = 'ee.taltech.iti0202.gomoku.Launcher'
 
 sourceSets {
     main {
@@ -34,7 +34,7 @@ sourceSets {
 jar {
     manifest {
         attributes(
-                'Main-Class': 'ee.taltech.Launcher'
+                'Main-Class': 'ee.taltech.iti0202.gomoku.Launcher'
         )
     }
 }

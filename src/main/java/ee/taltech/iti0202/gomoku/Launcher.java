@@ -1,4 +1,4 @@
-package ee.taltech.gomoku;
+package ee.taltech.iti0202.gomoku;
 
 public class Launcher {
 

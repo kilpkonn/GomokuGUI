@@ -1,8 +1,8 @@
-package ee.taltech.gomoku.app.controllers.components;
+package ee.taltech.iti0202.gomoku.app.controllers.components;
 
-import ee.taltech.gomoku.app.board.Board;
-import ee.taltech.gomoku.app.player.Player;
-import ee.taltech.gomoku.app.player.strategy.HumanStrategy;
+import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.player.Player;
+import ee.taltech.iti0202.gomoku.app.player.strategy.HumanStrategy;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;

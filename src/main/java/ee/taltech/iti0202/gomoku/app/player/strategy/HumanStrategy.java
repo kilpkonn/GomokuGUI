@@ -1,6 +1,6 @@
-package ee.taltech.gomoku.app.player.strategy;
+package ee.taltech.iti0202.gomoku.app.player.strategy;
 
-import ee.taltech.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.Board;
 
 public class HumanStrategy extends Strategy {
     private static Board.Location selectedCell;

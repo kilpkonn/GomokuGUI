@@ -1,7 +1,7 @@
-package ee.taltech.gomoku.app.board;
+package ee.taltech.iti0202.gomoku.app.board;
 
-import ee.taltech.gomoku.app.GameSession;
-import ee.taltech.gomoku.app.exceptions.LocationOccupiedException;
+import ee.taltech.iti0202.gomoku.app.GameSession;
+import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 
 import java.util.Objects;
 
