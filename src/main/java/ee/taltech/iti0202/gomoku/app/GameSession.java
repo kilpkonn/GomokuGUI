@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.gomoku.app;
 
 import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import ee.taltech.iti0202.gomoku.app.controllers.GameController;
 import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 import ee.taltech.iti0202.gomoku.app.exceptions.ThinkingTimeoutException;
@@ -23,8 +24,8 @@ public class GameSession {
     private boolean whiteToMove;
     private long player1Timeout;
     private long player2Timeout;
-    private List<Board.Location> moves;
-    private Board.Location currentMove;
+    private List<ILocation> moves;
+    private ILocation currentMove;
     private boolean showHeadToHeadStats;
 
     public GameSession(GameController gameController, Player player1, Player player2, int boardWidth,

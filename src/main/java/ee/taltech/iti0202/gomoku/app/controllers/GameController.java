@@ -4,6 +4,7 @@ import ee.taltech.gomoku.app.controllers.components.Banner;
 import ee.taltech.gomoku.app.util.Util;
 import ee.taltech.iti0202.gomoku.app.Game;
 import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import ee.taltech.iti0202.gomoku.app.controllers.components.BoardCell;
 import ee.taltech.iti0202.gomoku.app.player.Player;
 import ee.taltech.iti0202.gomoku.app.player.statistics.Statistics;
@@ -104,7 +105,7 @@ public class GameController extends Controller {
                         .forEach(x -> this.board.add(new BoardCell(new Board.Location(y, x), cellSize), x, y)));
     }
 
-    public void makeMove(Board.Location location, Player player) {
+    public void makeMove(ILocation location, Player player) {
         Util.updateFX(() -> {
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))
@@ -112,7 +113,7 @@ public class GameController extends Controller {
         });
     }
 
-    public void reverseMove(Board.Location location) {
+    public void reverseMove(ILocation location) {
         Util.updateFX(() -> {
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))

@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.gomoku.app.controllers.components;
 
 import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import ee.taltech.iti0202.gomoku.app.player.Player;
 import ee.taltech.iti0202.gomoku.app.player.strategy.HumanStrategy;
 import javafx.scene.control.Button;
@@ -21,7 +22,7 @@ public class BoardCell extends Button {
         this.setOnAction(e -> HumanStrategy.setSelectedCell(location));
     }
 
-    public boolean isAt(Board.Location location) {
+    public boolean isAt(ILocation location) {
         return this.location.equals(location);
     }
 

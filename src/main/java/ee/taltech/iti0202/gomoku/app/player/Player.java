@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.gomoku.app.player;
 
 import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import ee.taltech.iti0202.gomoku.app.exceptions.ThinkingTimeoutException;
 import ee.taltech.iti0202.gomoku.app.player.statistics.Statistics;
 import ee.taltech.iti0202.gomoku.app.player.strategy.Strategy;
@@ -23,7 +24,7 @@ public class Player {
     private Statistics stats;
     private Map<Player, Statistics> headToHeadStats = new HashMap<>();
     private ExecutorService executor = Executors.newSingleThreadExecutor();
-    private Future<Board.Location> future;
+    private Future<ILocation> future;
     private Paint color;
     private boolean isWhite;
     private Player opponent;
@@ -33,10 +34,10 @@ public class Player {
         this.stats = new Statistics();
     }
 
-    public Board.Location getMove(Board board, long timeout) throws ThinkingTimeoutException, CancellationException {
+    public ILocation getMove(Board board, long timeout) throws ThinkingTimeoutException, CancellationException {
         Task thinkingTask = new Task(board, isWhite);
         future = executor.submit(thinkingTask);
-        Board.Location move = null;
+        ILocation move = null;
 
         try {
             long start = System.nanoTime();
@@ -78,7 +79,7 @@ public class Player {
         return color;
     }
 
-    private class Task implements Callable<Board.Location> {
+    private class Task implements Callable<ILocation> {
 
         private Board board;
         private boolean isWhite;
@@ -89,7 +90,7 @@ public class Player {
         }
 
         @Override
-        public Board.Location call() {
+        public ILocation call() {
             return strategy.getMove(board, isWhite);
         }
     }

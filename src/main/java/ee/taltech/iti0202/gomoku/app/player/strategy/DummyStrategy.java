@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.gomoku.app.player.strategy;
 
 import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import javafx.util.Pair;
 
 import java.util.HashSet;
@@ -45,7 +46,7 @@ public class DummyStrategy extends Strategy {
 
 
     @Override
-    public Board.Location getMove(Board board, boolean isWhite) {
+    public ILocation getMove(Board board, boolean isWhite) {
         return getMove(board, isWhite, RECURSION_DEPTH);
     }
 

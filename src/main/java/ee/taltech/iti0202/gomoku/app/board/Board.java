@@ -5,7 +5,7 @@ import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 
 import java.util.Objects;
 
-public class Board {
+public class Board implements IBoard<Board.Stone> {
 
     private static final int SQUARES_IN_LINE_FOR_WIN = 5;
 
@@ -25,14 +25,14 @@ public class Board {
         matrix = new Stone[height][width];
     }
 
-    public void makeMove(Location location, Stone stone) throws LocationOccupiedException {
+    public void makeMove(ILocation location, Stone stone) throws LocationOccupiedException {
         if (!isFree(location)) throw new LocationOccupiedException("Location already occupied");
-        matrix[location.y][location.x] = stone;
+        matrix[location.getY()][location.getX()] = stone;
     }
 
-    public void reverseMove(Location location) {
-        if (!isFree(location) && location.y >= 0 && location.x >= 0) {
-            matrix[location.y][location.x] = null;
+    public void reverseMove(ILocation location) {
+        if (!isFree(location) && location.getY() >= 0 && location.getX() >= 0) {
+            matrix[location.getY()][location.getX()] = null;
         }
     }
 
@@ -54,8 +54,8 @@ public class Board {
         return hasFree ? GameSession.GameState.PLAYING : GameSession.GameState.DRAW;
     }
 
-    public boolean isFree(Location location) {
-        return location.y >= 0 && location.x >= 0 && matrix[location.y][location.x] == null;
+    public boolean isFree(ILocation location) {
+        return location.getY() >= 0 && location.getX() >= 0 && matrix[location.getY()][location.getX()] == null;
     }
 
     public Stone[][] getMatrix() {
@@ -64,6 +64,16 @@ public class Board {
 
     public int getWidth() {
         return width;
+    }
+
+    @Override
+    public Stone getWhite() {
+        return Stone.WHITE;
+    }
+
+    @Override
+    public Stone getBlack() {
+        return Stone.BLACK;
     }
 
     public int getHeight() {
@@ -132,7 +142,7 @@ public class Board {
     }
 
 
-    public static class Location {
+    public static class Location implements ILocation{
         private int x, y;
 
         public Location(int y, int x) {

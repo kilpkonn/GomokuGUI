@@ -1,15 +1,16 @@
 package ee.taltech.iti0202.gomoku.app.player.strategy;
 
 import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
 import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 
-public abstract class Strategy {
+public abstract class Strategy implements GenericStrategy<Board>{
 
-    public abstract Board.Location getMove(Board board, boolean isWhite);
+    public abstract ILocation getMove(Board board, boolean isWhite);
 
     public Paint getColor(boolean white) {
         if (white) {
