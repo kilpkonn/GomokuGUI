@@ -20,7 +20,7 @@ javafx {
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
-mainClassName = 'ee.kilpkonn.Launcher'
+mainClassName = 'ee.taltech.Launcher'
 
 sourceSets {
     main {
