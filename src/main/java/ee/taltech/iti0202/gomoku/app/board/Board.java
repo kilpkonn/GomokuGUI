@@ -3,6 +3,7 @@ package ee.taltech.iti0202.gomoku.app.board;
 import ee.taltech.iti0202.gomoku.app.GameSession;
 import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Board {
@@ -59,7 +60,7 @@ public class Board {
     }
 
     public Stone[][] getMatrix() {
-        return matrix;
+        return Arrays.stream(matrix).map(Stone[]::clone).toArray(Stone[][]::new);
     }
 
     public int getWidth() {
@@ -69,7 +70,6 @@ public class Board {
     public int getHeight() {
         return height;
     }
-
 
     private boolean rDiagonal(int r, int c) {
         Stone sq = matrix[r][c];
