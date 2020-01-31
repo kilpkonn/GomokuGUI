@@ -5,7 +5,7 @@ import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 
 import java.util.Objects;
 
-public class Board implements IBoard<Board.Stone> {
+public class Board {
 
     private static final int SQUARES_IN_LINE_FOR_WIN = 5;
 
@@ -64,16 +64,6 @@ public class Board implements IBoard<Board.Stone> {
 
     public int getWidth() {
         return width;
-    }
-
-    @Override
-    public Stone getWhite() {
-        return Stone.WHITE;
-    }
-
-    @Override
-    public Stone getBlack() {
-        return Stone.BLACK;
     }
 
     public int getHeight() {

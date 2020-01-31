@@ -50,7 +50,7 @@ public class DummyStrategy extends Strategy {
         return getMove(board, isWhite, RECURSION_DEPTH);
     }
 
-    private Board.Location getMove(Board board, boolean player, int depth) {
+    private ILocation getMove(Board board, boolean player, int depth) {
         currentBoard = board.getMatrix();
         boardWidth = board.getWidth();
         boardHeight = board.getHeight();

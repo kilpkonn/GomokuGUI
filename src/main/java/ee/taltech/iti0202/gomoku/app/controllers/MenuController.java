@@ -38,6 +38,7 @@ public class MenuController extends Controller {
 
         List<Strategy> strategies =
                 Util.getClassesInPackage(Strategy.class.getPackageName()).stream()
+                        .filter(c -> !c.isInterface())
                         .filter(c -> c.getSuperclass() == Strategy.class)
                         .map(c -> {
                             try {

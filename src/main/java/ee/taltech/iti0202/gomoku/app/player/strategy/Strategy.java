@@ -8,7 +8,7 @@ import javafx.scene.paint.Paint;
 import javafx.scene.paint.RadialGradient;
 import javafx.scene.paint.Stop;
 
-public abstract class Strategy implements GenericStrategy<Board>{
+public abstract class Strategy {
 
     public abstract ILocation getMove(Board board, boolean isWhite);
 
