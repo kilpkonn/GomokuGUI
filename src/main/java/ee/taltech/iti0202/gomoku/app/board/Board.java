@@ -6,7 +6,7 @@ import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class Board {
+public class Board implements IBoard {
 
     private static final int SQUARES_IN_LINE_FOR_WIN = 5;
 

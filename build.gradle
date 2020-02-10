@@ -19,7 +19,7 @@ repositories {
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 
-    implementation files('libs/opp-weak-1.0.jar')
+    compile files('libs/gomoku-opponents-1.0.jar')
 }
 
 javafx {

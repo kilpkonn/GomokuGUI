@@ -1,6 +1,6 @@
 package ee.taltech.iti0202.gomoku.app.player.strategy;
 
-import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.IBoard;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
@@ -10,7 +10,7 @@ import javafx.scene.paint.Stop;
 
 public abstract class Strategy {
 
-    public abstract ILocation getMove(Board board, boolean isWhite);
+    public abstract ILocation getMove(IBoard board, boolean isWhite);
 
     public Paint getColor(boolean white) {
         if (white) {

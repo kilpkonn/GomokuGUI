@@ -1,6 +1,7 @@
 package ee.taltech.iti0202.gomoku.app.player.strategy;
 
 import ee.taltech.iti0202.gomoku.app.board.Board;
+import ee.taltech.iti0202.gomoku.app.board.IBoard;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
 import javafx.util.Pair;
 
@@ -46,11 +47,11 @@ public class DummyStrategy extends Strategy {
 
 
     @Override
-    public ILocation getMove(Board board, boolean isWhite) {
+    public ILocation getMove(IBoard board, boolean isWhite) {
         return getMove(board, isWhite, RECURSION_DEPTH);
     }
 
-    private ILocation getMove(Board board, boolean player, int depth) {
+    private ILocation getMove(IBoard board, boolean player, int depth) {
         currentBoard = board.getMatrix();
         boardWidth = board.getWidth();
         boardHeight = board.getHeight();

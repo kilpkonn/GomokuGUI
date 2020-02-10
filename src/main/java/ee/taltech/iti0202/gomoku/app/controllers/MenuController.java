@@ -2,6 +2,8 @@ package ee.taltech.iti0202.gomoku.app.controllers;
 
 import ee.taltech.gomoku.app.util.Util;
 import ee.taltech.iti0202.gomoku.app.player.strategy.Strategy;
+import ee.taltech.iti0202.gomoku.app.player.strategy.StrongOpponent;
+import ee.taltech.iti0202.gomoku.app.player.strategy.WeakOpponent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -13,6 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class MenuController extends Controller {
 
@@ -37,7 +40,8 @@ public class MenuController extends Controller {
     public void initialize(URL location, ResourceBundle resources) {
 
         List<Strategy> strategies =
-                Util.getClassesInPackage(Strategy.class.getPackageName()).stream()
+                Stream.concat(Stream.of(WeakOpponent.class, StrongOpponent.class), // Why is it needed to declare these?
+                        Util.getClassesInPackage(Strategy.class.getPackageName()).stream())
                         .filter(c -> !c.isInterface())
                         .filter(c -> c.getSuperclass() == Strategy.class)
                         .map(c -> {
