@@ -1,5 +1,5 @@
 # GomokuGUI
-Gomoku UI
+_Gomoku UI_
 
 <img src="/readme/menu.png?raw=true" width="800" height="530">
 <img src="/readme/game.png?raw=true" width="800" height="530">
@@ -42,6 +42,6 @@ Should look something like this:
 You might need to re-sync/import gradle project again. (Use refresh icon on gradle tab)  
 To run program simply select run task from gradle tab.
 
-## Gomoku is broken...
+## If Gomoku is broken...
 * **You can create issues here on github**
 * **Pull requests are also welcome for improvements!**

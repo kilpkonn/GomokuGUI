@@ -24,6 +24,11 @@ public class HumanStrategy extends Strategy {
     }
 
     @Override
+    public void onGameOver() {
+
+    }
+
+    @Override
     public String getName() {
         return "Human";
     }

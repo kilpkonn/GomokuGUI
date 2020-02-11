@@ -26,6 +26,8 @@ public abstract class Strategy {
         }
     }
 
+    public abstract void onGameOver();
+
     public abstract String getName();
 
     @Override

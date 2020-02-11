@@ -63,7 +63,9 @@ public class Player {
     public void terminateThinking() {
         executor.shutdown();
     }
+
     public void submitGame(Statistics.Result result) {
+        strategy.onGameOver();
         stats.submitGame(result);
         headToHeadStats.get(opponent).submitGame(result);
     }

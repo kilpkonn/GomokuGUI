@@ -411,6 +411,11 @@ public class DummyStrategy extends Strategy {
     }
 
     @Override
+    public void onGameOver() {
+
+    }
+
+    @Override
     public String getName() {
         return "No minmax";
     }
