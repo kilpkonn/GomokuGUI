@@ -33,10 +33,12 @@ Run with
 Clone project...  
 If IntelliJ wants to import gradle project, click "yes".    
 Intellij has a gradle window on the right:
-![IntelliJ gradle](./readme/intellij-gradle.png)
+![IntelliJ gradle](./readme/intellij-gradle.png)  
+  
 Copy `gomoku-opponents-1.0.jar` to `/libs` directory.   
 Should look something like this:  
-![libs](./readme/libs.png)
+![libs](./readme/libs.png)  
+  
 You might need to re-sync/import gradle project again. (Use refresh icon on gradle tab)  
 To run program simply select run task from gradle tab.
 
