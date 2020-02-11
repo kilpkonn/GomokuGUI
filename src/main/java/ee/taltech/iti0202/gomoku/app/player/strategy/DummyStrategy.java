@@ -1,12 +1,15 @@
 package ee.taltech.iti0202.gomoku.app.player.strategy;
 
-import ee.taltech.iti0202.gomoku.app.board.Board;
 import ee.taltech.iti0202.gomoku.app.board.IBoard;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
+import ee.taltech.iti0202.gomoku.app.board.IStone;
+import ee.taltech.iti0202.gomoku.app.board.Location;
+import ee.taltech.iti0202.gomoku.app.board.Stone;
 import javafx.util.Pair;
 
 import java.util.HashSet;
 import java.util.Set;
+
 
 /**
  * Important!
@@ -21,7 +24,7 @@ import java.util.Set;
  * This file here might be overwritten in future versions.
  */
 public class DummyStrategy extends Strategy {
-    private Board.Stone[][] currentBoard;
+    private IStone[][] currentBoard;
     private short[][] currentWeightedBoard;
     private Set<Pair<Integer, Integer>> checkedRows = new HashSet<>();
     private Set<Pair<Integer, Integer>> checkedCols = new HashSet<>();
@@ -33,7 +36,7 @@ public class DummyStrategy extends Strategy {
     private int MAX_SHAPE_LENGTH = 5;
     private int boardWidth;
     private int boardHeight;
-    private Board.Stone player;
+    private Stone player;
     private boolean won;
 
     private static final short FIVE = 25;
@@ -55,7 +58,7 @@ public class DummyStrategy extends Strategy {
         currentBoard = board.getMatrix();
         boardWidth = board.getWidth();
         boardHeight = board.getHeight();
-        this.player = player ? Board.Stone.WHITE : Board.Stone.BLACK;
+        this.player = player ? Stone.WHITE : Stone.BLACK;
 
         currentWeightedBoard = new short[board.getHeight()][board.getWidth()];
 
@@ -86,14 +89,14 @@ public class DummyStrategy extends Strategy {
 
         // Start...
         if (empty) {
-            return new Board.Location(boardHeight / 2, boardWidth / 2);
+            return new Location(boardHeight / 2, boardWidth / 2);
         }
 
         return findMostWanted(currentWeightedBoard);
     }
 
 
-    private Board.Location findMostWanted(short[][] board) {
+    private Location findMostWanted(short[][] board) {
         int maxX = 0, maxY = 0, max = -1;
         for (int y = 0; y < boardHeight; y++) {
             for (int x = 0; x < boardWidth; x++) {
@@ -104,7 +107,7 @@ public class DummyStrategy extends Strategy {
                 }
             }
         }
-        return new Board.Location(maxY, maxX);
+        return new Location(maxY, maxX);
     }
 
     private void weightPaintBoard(int y, int x) {
@@ -126,8 +129,8 @@ public class DummyStrategy extends Strategy {
     }
 
     private void findRows(int y, int x) {
-        Board.Stone start = currentBoard[y][x];
-        Board.Stone enemy = start == Board.Stone.WHITE ? Board.Stone.BLACK : Board.Stone.WHITE;
+        IStone start = currentBoard[y][x];
+        Stone enemy = start == Stone.WHITE ? Stone.BLACK : Stone.WHITE;
         int newX = x;
         int hotX = -1;
 
@@ -196,8 +199,8 @@ public class DummyStrategy extends Strategy {
     }
 
     private void findCols(int y, int x) {
-        Board.Stone start = currentBoard[y][x];
-        Board.Stone enemy = start == Board.Stone.WHITE ? Board.Stone.BLACK : Board.Stone.WHITE;
+        IStone start = currentBoard[y][x];
+        Stone enemy = start == Stone.WHITE ? Stone.BLACK : Stone.WHITE;
 
         int newY = y;
         while (newY + 1 < boardHeight && currentBoard[newY + 1][x] == start) {
@@ -261,8 +264,8 @@ public class DummyStrategy extends Strategy {
     }
 
     private void findDiagonals1(int y, int x) {
-        Board.Stone start = currentBoard[y][x];
-        Board.Stone enemy = start == Board.Stone.WHITE ? Board.Stone.BLACK : Board.Stone.WHITE;
+        IStone start = currentBoard[y][x];
+        Stone enemy = start == Stone.WHITE ? Stone.BLACK : Stone.WHITE;
         int newX = x;
         int newY = y;
         while (newX + 1 < boardWidth && newY + 1 < boardHeight && currentBoard[newY + 1][newX + 1] == start) {
@@ -323,8 +326,8 @@ public class DummyStrategy extends Strategy {
     }
 
     private void findDiagonals2(int y, int x) {
-        Board.Stone start = currentBoard[y][x];
-        Board.Stone enemy = start == Board.Stone.WHITE ? Board.Stone.BLACK : Board.Stone.WHITE;
+        IStone start = currentBoard[y][x];
+        Stone enemy = start == Stone.WHITE ? Stone.BLACK : Stone.WHITE;
         int newX = x;
         int newY = y;
         while (newY > 0 && newX + 1 < boardWidth && currentBoard[newY - 1][newX + 1] == start) {
@@ -384,7 +387,7 @@ public class DummyStrategy extends Strategy {
         }
     }
 
-    private short getComboScore(int len, float multiplier, boolean open, Board.Stone start, Board.Stone player) {
+    private short getComboScore(int len, float multiplier, boolean open, IStone start, IStone player) {
         float comboScore = 0;
         won = won || len >= 5 || (len == 4 && open);
         switch (len) {

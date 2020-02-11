@@ -1,11 +1,11 @@
 package ee.taltech.iti0202.gomoku.app.player.strategy;
 
-import ee.taltech.iti0202.gomoku.app.board.Board;
 import ee.taltech.iti0202.gomoku.app.board.IBoard;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
+import ee.taltech.iti0202.gomoku.app.board.Location;
 
 public class HumanStrategy extends Strategy {
-    private static Board.Location selectedCell;
+    private static Location selectedCell;
     private static boolean playing = false;
 
     @Override
@@ -28,7 +28,7 @@ public class HumanStrategy extends Strategy {
         return "Human";
     }
 
-    public static void setSelectedCell(Board.Location selectedCell) {
+    public static void setSelectedCell(Location selectedCell) {
         if (playing) HumanStrategy.selectedCell = selectedCell;
     }
 }

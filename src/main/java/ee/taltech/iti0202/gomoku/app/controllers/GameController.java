@@ -5,6 +5,7 @@ import ee.taltech.gomoku.app.util.Util;
 import ee.taltech.iti0202.gomoku.app.Game;
 import ee.taltech.iti0202.gomoku.app.board.Board;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
+import ee.taltech.iti0202.gomoku.app.board.Location;
 import ee.taltech.iti0202.gomoku.app.controllers.components.BoardCell;
 import ee.taltech.iti0202.gomoku.app.player.Player;
 import ee.taltech.iti0202.gomoku.app.player.statistics.Statistics;
@@ -102,7 +103,7 @@ public class GameController extends Controller {
 
         IntStream.range(0, board.getHeight())
                 .forEach(y -> IntStream.range(0, board.getWidth())
-                        .forEach(x -> this.board.add(new BoardCell(new Board.Location(y, x), cellSize), x, y)));
+                        .forEach(x -> this.board.add(new BoardCell(new Location(y, x), cellSize), x, y)));
     }
 
     public void makeMove(ILocation location, Player player) {

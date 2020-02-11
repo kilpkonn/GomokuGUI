@@ -2,6 +2,8 @@ package ee.taltech.iti0202.gomoku.app;
 
 import ee.taltech.iti0202.gomoku.app.board.Board;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
+import ee.taltech.iti0202.gomoku.app.board.Location;
+import ee.taltech.iti0202.gomoku.app.board.Stone;
 import ee.taltech.iti0202.gomoku.app.controllers.GameController;
 import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 import ee.taltech.iti0202.gomoku.app.exceptions.ThinkingTimeoutException;
@@ -15,7 +17,7 @@ import java.util.stream.Collectors;
 
 public class GameSession {
 
-    private static final Board.Location EMPTY_MOVE = new Board.Location(-1, -1);
+    private static final Location EMPTY_MOVE = new Location(-1, -1);
     private GameController gameController;
     private Player player1;
     private Player player2;
@@ -58,11 +60,11 @@ public class GameSession {
             if (whiteToMove) {
                 player1.setIsWhite(true);
                 currentMove = player1.getMove(board, player1Timeout);
-                board.makeMove(currentMove, Board.Stone.WHITE);
+                board.makeMove(currentMove, Stone.WHITE);
             } else {
                 player2.setIsWhite(false);
                 currentMove = player2.getMove(board, player2Timeout);
-                board.makeMove(currentMove, Board.Stone.BLACK);
+                board.makeMove(currentMove, Stone.BLACK);
             }
             gameController.makeMove(currentMove, whiteToMove ? player1 : player2);
             gameController.updateStats(player1, player2, showHeadToHeadStats);
@@ -88,7 +90,7 @@ public class GameSession {
 
         currentMove = moves.get(index);
         try {
-            board.makeMove(currentMove, whiteToMove ? Board.Stone.WHITE : Board.Stone.BLACK);
+            board.makeMove(currentMove, whiteToMove ? Stone.WHITE : Stone.BLACK);
             gameController.makeMove(currentMove, whiteToMove ? player1 : player2);
         } catch (LocationOccupiedException e) {
             e.printStackTrace();

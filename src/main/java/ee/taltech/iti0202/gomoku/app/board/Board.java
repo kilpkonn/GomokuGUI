@@ -3,10 +3,9 @@ package ee.taltech.iti0202.gomoku.app.board;
 import ee.taltech.iti0202.gomoku.app.GameSession;
 import ee.taltech.iti0202.gomoku.app.exceptions.LocationOccupiedException;
 
-import java.util.Arrays;
 import java.util.Objects;
 
-public class Board implements IBoard {
+public class Board<T> implements IBoard {
 
     private static final int SQUARES_IN_LINE_FOR_WIN = 5;
 
@@ -14,10 +13,6 @@ public class Board implements IBoard {
     private int height;
 
     private Stone[][] matrix;
-
-    public enum Stone {
-        BLACK, WHITE
-    }
 
     public Board(int width, int height) {
         this.width = width;
@@ -60,7 +55,7 @@ public class Board implements IBoard {
     }
 
     public Stone[][] getMatrix() {
-        return Arrays.stream(matrix).map(Stone[]::clone).toArray(Stone[][]::new);
+        return matrix;
     }
 
     public int getWidth() {
@@ -70,6 +65,7 @@ public class Board implements IBoard {
     public int getHeight() {
         return height;
     }
+
 
     private boolean rDiagonal(int r, int c) {
         Stone sq = matrix[r][c];
@@ -131,39 +127,4 @@ public class Board implements IBoard {
         return (w >= SQUARES_IN_LINE_FOR_WIN);
     }
 
-
-    public static class Location implements ILocation{
-        private int x, y;
-
-        public Location(int y, int x) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public int getY() {
-            return y;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Location location = (Location) o;
-            return x == location.x &&
-                    y == location.y;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(x, y);
-        }
-
-        public Location clone() {
-            return new Location(y, x);
-        }
-    }
 }

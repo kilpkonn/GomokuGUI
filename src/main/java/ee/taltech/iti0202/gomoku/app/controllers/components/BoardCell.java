@@ -1,7 +1,7 @@
 package ee.taltech.iti0202.gomoku.app.controllers.components;
 
-import ee.taltech.iti0202.gomoku.app.board.Board;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
+import ee.taltech.iti0202.gomoku.app.board.Location;
 import ee.taltech.iti0202.gomoku.app.player.Player;
 import ee.taltech.iti0202.gomoku.app.player.strategy.HumanStrategy;
 import javafx.scene.control.Button;
@@ -10,10 +10,10 @@ import javafx.scene.shape.Circle;
 
 public class BoardCell extends Button {
 
-    private Board.Location location;
+    private Location location;
     private Stone stone;
 
-    public BoardCell(Board.Location location, double size) {
+    public BoardCell(Location location, double size) {
         this.location = location;
         this.getStyleClass().add("board-cell");
         this.setMinSize(size, size);
