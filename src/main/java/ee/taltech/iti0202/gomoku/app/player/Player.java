@@ -60,6 +60,9 @@ public class Player {
         future.cancel(true);
     }
 
+    public void terminateThinking() {
+        executor.shutdown();
+    }
     public void submitGame(Statistics.Result result) {
         stats.submitGame(result);
         headToHeadStats.get(opponent).submitGame(result);

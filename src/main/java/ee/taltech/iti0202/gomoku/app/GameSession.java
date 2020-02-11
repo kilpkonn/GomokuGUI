@@ -128,6 +128,9 @@ public class GameSession {
     }
 
     public void submitGame() {
+        player1.terminateThinking();
+        player2.terminateThinking();
+
         switch (state) {
             case WHITE_WON:
                 player1.submitGame(Statistics.Result.WIN);
