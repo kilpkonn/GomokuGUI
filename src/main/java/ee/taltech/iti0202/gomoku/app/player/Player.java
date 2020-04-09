@@ -35,6 +35,9 @@ public class Player {
     }
 
     public ILocation getMove(Board board, long timeout) throws ThinkingTimeoutException, CancellationException {
+        if (executor.isShutdown())
+            executor = Executors.newSingleThreadExecutor();
+
         Task thinkingTask = new Task(board, isWhite);
         future = executor.submit(thinkingTask);
         ILocation move = null;

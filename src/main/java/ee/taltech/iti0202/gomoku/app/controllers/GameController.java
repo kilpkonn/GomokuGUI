@@ -1,7 +1,6 @@
 package ee.taltech.iti0202.gomoku.app.controllers;
 
 import ee.taltech.gomoku.app.controllers.components.Banner;
-import ee.taltech.gomoku.app.util.Util;
 import ee.taltech.iti0202.gomoku.app.Game;
 import ee.taltech.iti0202.gomoku.app.board.Board;
 import ee.taltech.iti0202.gomoku.app.board.ILocation;
@@ -9,6 +8,7 @@ import ee.taltech.iti0202.gomoku.app.board.Location;
 import ee.taltech.iti0202.gomoku.app.controllers.components.BoardCell;
 import ee.taltech.iti0202.gomoku.app.player.Player;
 import ee.taltech.iti0202.gomoku.app.player.statistics.Statistics;
+import ee.taltech.iti0202.gomoku.app.util.Util;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
@@ -28,7 +28,6 @@ public class GameController extends Controller {
     private GridPane board;
     @FXML
     private StackPane pane;
-
     @FXML
     private Label player1_name;
     @FXML

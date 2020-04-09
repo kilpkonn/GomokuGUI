@@ -116,6 +116,7 @@ public class Game {
 
     public void end() {
         primaryStage.setScene(menuScene);  //needed for banner fix?
+        session.terminateGame();
         if (gamesCount > 0) {
             start(session.getPlayer2().getStrategy(),
                     session.getPlayer1().getStrategy(),
@@ -137,6 +138,10 @@ public class Game {
     }
 
     public void close() {
+        if (session != null) {
+            session.terminateGame();
+        }
+
         if (gameThread != null) {
             gameThread.interrupt();
         }

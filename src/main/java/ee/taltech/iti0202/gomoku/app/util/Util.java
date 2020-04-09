@@ -1,4 +1,4 @@
-package ee.taltech.gomoku.app.util;
+package ee.taltech.iti0202.gomoku.app.util;
 
 import javafx.application.Platform;
 

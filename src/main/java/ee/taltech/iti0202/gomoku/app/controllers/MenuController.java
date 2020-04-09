@@ -1,9 +1,9 @@
 package ee.taltech.iti0202.gomoku.app.controllers;
 
-import ee.taltech.gomoku.app.util.Util;
 import ee.taltech.iti0202.gomoku.app.player.strategy.Strategy;
 import ee.taltech.iti0202.gomoku.app.player.strategy.StrongOpponent;
 import ee.taltech.iti0202.gomoku.app.player.strategy.WeakOpponent;
+import ee.taltech.iti0202.gomoku.app.util.Util;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
