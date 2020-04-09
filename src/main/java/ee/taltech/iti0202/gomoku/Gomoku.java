@@ -4,6 +4,7 @@ import ee.taltech.iti0202.gomoku.app.Game;
 import ee.taltech.iti0202.gomoku.app.controllers.GameController;
 import ee.taltech.iti0202.gomoku.app.controllers.MenuController;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -41,6 +42,7 @@ public class Gomoku extends Application {
 
         primaryStage.setOnCloseRequest(e -> {
             game.close();
+            Platform.exit();
         });
 
         primaryStage.show();

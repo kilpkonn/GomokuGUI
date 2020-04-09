@@ -91,14 +91,14 @@ public class GameController extends Controller {
 
     public void initializeBoard(Board board) {
         this.board.getChildren().clear();
+        play.setText("STOP");
 
         if (banner != null) {
             pane.getChildren().remove(banner);
             banner = null;
         }
 
-        double cellSize = game.getWindowHeight()
-                / (board.getHeight() < board.getWidth() ? board.getWidth() : board.getHeight());
+        double cellSize = game.getWindowHeight() / (Math.max(board.getHeight(), board.getWidth()));
 
         IntStream.range(0, board.getHeight())
                 .forEach(y -> IntStream.range(0, board.getWidth())
@@ -109,7 +109,7 @@ public class GameController extends Controller {
         Util.updateFX(() -> {
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))
-                    .forEach(c -> ((BoardCell) c).placeStone(player));  //Do it just once, no need for optional
+                    .forEach(c -> ((BoardCell) c).placeStone(player));  // Do it just once, no need for optional
         });
     }
 
@@ -117,7 +117,7 @@ public class GameController extends Controller {
         Util.updateFX(() -> {
             board.getChildren().stream()
                     .filter(c -> ((BoardCell) c).isAt(location))
-                    .forEach(c -> ((BoardCell) c).removeStone());  //Do it just once, no need for optional
+                    .forEach(c -> ((BoardCell) c).removeStone());  // Do it just once, no need for optional
         });
     }
 
