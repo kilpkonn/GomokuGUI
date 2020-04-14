@@ -35,6 +35,7 @@ public class Player {
     }
 
     public ILocation getMove(Board board, long timeout) throws ThinkingTimeoutException, CancellationException {
+        System.out.println(String.format("Player to move: %s", strategy.getName()));
         if (executor.isShutdown())
             executor = Executors.newSingleThreadExecutor();
 
@@ -49,8 +50,9 @@ public class Player {
             double dt = (end - start) / Math.pow(10, 9);
             stats.addMove(dt);
             headToHeadStats.get(opponent).addMove(dt);
+            // Thread.sleep(100); // TODO: allow setting in UI
 
-        } catch (InterruptedException | ExecutionException e) {
+        } catch (NullPointerException | InterruptedException | ExecutionException e) {
             e.printStackTrace();
         } catch (TimeoutException e) {
             // e.printStackTrace();

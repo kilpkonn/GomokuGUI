@@ -77,7 +77,7 @@ public class DummyStrategy extends Strategy {
                 }
             }
         }
-        if (depth == RECURSION_DEPTH) {
+        /*if (depth == RECURSION_DEPTH) {
             for (int y = 0; y < board.getHeight(); y++) {
                 StringBuilder line = new StringBuilder();
                 for (int x = 0; x < board.getWidth(); x++) {
@@ -85,7 +85,7 @@ public class DummyStrategy extends Strategy {
                 }
                 System.out.println(line);
             }
-        }
+        }*/
 
         // Start...
         if (empty) {
