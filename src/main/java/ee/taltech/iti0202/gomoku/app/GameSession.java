@@ -71,7 +71,7 @@ public class GameSession {
 
             moves.add(currentMove);
 
-        } catch (LocationOccupiedException | ThinkingTimeoutException | CancellationException e) {
+        } catch (NullPointerException | LocationOccupiedException | ThinkingTimeoutException | CancellationException e) {
             e.printStackTrace();
             currentMove = EMPTY_MOVE.clone();
             moves.add(currentMove);
