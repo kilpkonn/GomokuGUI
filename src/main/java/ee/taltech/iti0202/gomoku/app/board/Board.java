@@ -55,7 +55,9 @@ public class Board<T> implements IBoard {
     }
 
     public Stone[][] getMatrix() {
-        return matrix;
+        return java.util.Arrays.stream(matrix)
+                .map(Stone[]::clone)
+                .toArray($ -> matrix.clone());
     }
 
     public int getWidth() {
