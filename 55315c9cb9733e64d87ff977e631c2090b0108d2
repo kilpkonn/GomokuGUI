@@ -1,0 +1,5 @@
+[ver:1,total:480,branch:master]
+build.gradle:240,1618398000:240,r
+src/main/java/ee/taltech/iti0202/gomoku/app/board/Board.java:173,1618398000:173,m
+.gtm/Gradle-> GomokuGUI [Gomoku.main()].app:60,1618398000:60,r
+src/main/java/ee/taltech/iti0202/gomoku/Launcher.java:7,1618398000:7,r
